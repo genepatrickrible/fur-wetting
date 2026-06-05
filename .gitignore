@@ -1,0 +1,7 @@
+.DS_Store
+static/images/scratch/
+*.pyc
+__pycache__/
+
+# Source manuscripts (publisher copyright); not for public hosting
+anthology/
