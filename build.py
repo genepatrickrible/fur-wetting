@@ -58,6 +58,28 @@ SITE = {
     # link-row on every subpage and the hub hero.
     "schedule_url": "https://calendar.app.google/9djYm5daK8n7TC3VA",
     "discussion_url": "https://github.com/genepatrickrible/fur-wetting/discussions",
+    # Giscus widget script. Renders as an in-page comments box at the
+    # bottom of every page (after Acknowledgments, before the footer).
+    # `data-loading="lazy"` defers fetching the script + comments until
+    # the visitor scrolls near the widget — saves bandwidth for the
+    # majority of visitors who never reach the bottom of a long page.
+    "giscus_html": """\
+<script src="https://giscus.app/client.js"
+        data-repo="genepatrickrible/fur-wetting"
+        data-repo-id="R_kgDOSxn_Xw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOSxn_X84C-i7R"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>""",
     # Shared acknowledgments shown on the hub
     "acknowledgments_hub": (
         "We thank the many undergraduate researchers who contributed across "
@@ -1205,6 +1227,18 @@ SUBPAGE_TEMPLATE = """<!DOCTYPE html>
   </div>
 </section>
 
+<section class="section" id="discussion">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Discussion</h2>
+    <p class="subtitle is-6 has-text-centered firsts-sub">
+      Questions, comments, and follow-up work. Sign in with GitHub to post.
+    </p>
+    <div class="giscus-wrap">
+{giscus_html}
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container is-max-desktop has-text-centered">
     <p class="is-size-7">
@@ -1355,6 +1389,18 @@ HUB_TEMPLATE = """<!DOCTYPE html>
   </div>
 </section>
 
+<section class="section" id="discussion">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Discussion</h2>
+    <p class="subtitle is-6 has-text-centered firsts-sub">
+      Questions, comments, and follow-up work. Sign in with GitHub to post.
+    </p>
+    <div class="giscus-wrap">
+{giscus_html}
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="container is-max-desktop has-text-centered">
     <p class="is-size-7">
@@ -1438,6 +1484,7 @@ def render_subpage(paper):
         ),
         bibtex_block=html.escape(bibtex(paper)),
         acknowledgments=html.escape(paper["acknowledgments"]),
+        giscus_html=SITE.get("giscus_html", ""),
         repo_url=SITE["repo_url"],
     )
 
@@ -1507,6 +1554,7 @@ def render_hub():
         hub_paper_cards=hub_paper_cards(),
         combined_bibtex=html.escape(combined),
         acknowledgments=html.escape(SITE["acknowledgments_hub"]),
+        giscus_html=SITE.get("giscus_html", ""),
         repo_url=SITE["repo_url"],
     )
 
