@@ -229,6 +229,10 @@ PAPERS = [
         # very bottom of the "Firsts in this work" section as a full-width
         # YouTube embed.
         "walkthrough_youtube_id": "Xfcf5kWpkpM",
+        # APS DFD 2022 conference slides, archived on Zenodo (citable DOI).
+        # Drives the hero-row "Slides" button. The Zenodo record is
+        # independently citable from the journal paper.
+        "slides_url": "https://doi.org/10.5281/zenodo.20493438",
         "videos": [
             {"label": "Movie S1: Impact classifications", "youtube_id": "DExOMbiahUk",
              "caption": "Image sequences of all eight observed impact classifications, paired with the normalized temporal heat maps from Figure 3."},
@@ -988,6 +992,14 @@ def link_buttons(paper, canonical_subpage_url):
             <span class="link-block">
               <a href="{paper['youtube_playlist_url']}" class="button is-dark is-rounded" target="_blank" rel="noopener">
                 <span class="icon"><i class="fab fa-youtube"></i></span><span>Video</span>
+              </a>
+            </span>"""))
+    # Slides (conference deck, e.g. archived on Zenodo with its own DOI)
+    if paper.get("slides_url"):
+        btns.append(textwrap.dedent(f"""\
+            <span class="link-block">
+              <a href="{paper['slides_url']}" class="button is-dark is-rounded" target="_blank" rel="noopener">
+                <span class="icon"><i class="fas fa-display"></i></span><span>Slides</span>
               </a>
             </span>"""))
     # Cite dropdown
