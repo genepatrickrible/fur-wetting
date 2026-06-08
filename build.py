@@ -296,10 +296,25 @@ PAPERS = [
             {"icon": "fas fa-arrow-down", "title": "Capillary wicking below a Bond-number threshold", "summary": "When Bo ⩽ 0.11 the penetrated liquid wicks vertically along the fibers, extending the wetted footprint beyond the kinematic depth.", "section": "section-wicking"},
         ],
         "result_sections": [
-            {"id": "section-vertical", "title": "Why vertical arrays behave differently", "explanation": "The drop now impacts fiber tips rather than fiber sides, so its kinetic energy converts to penetration through a different geometric channel. We tabulate the new impact regimes via a modified aspect ratio.", "figs": 2},
-            {"id": "section-model", "title": "An energy-conservation model for penetration depth", "explanation": "We balance kinetic energy at impact against the work done by drag and capillary forces on the descending liquid front. In the sparse regime (Oh < 4 × 10⁻²) the prediction is linear in We; experiments confirm.", "figs": 1},
-            {"id": "section-wettability-vert", "title": "Capillarity helps hydrophilic vertical arrays penetrate", "explanation": "In contrast to horizontal fibers, vertical hydrophilic arrays draw additional liquid downward via capillarity, deepening the wetted column.", "figs": 1},
-            {"id": "section-wicking", "title": "A Bond-number criterion for capillary wicking", "explanation": "Whenever the Bond number of the residual drop falls below 0.11, the trapped liquid wicks vertically along the fibers, extending the effective penetration depth beyond what impact alone would predict.", "figs": 1},
+            {"id": "section-vertical", "title": "Why vertical arrays behave differently",
+             "explanation": "The drop now impacts fiber tips rather than fiber sides, so its kinetic energy converts to penetration through a different geometric channel. We tabulate the new impact regimes via a modified aspect ratio.",
+             "figs": 2,
+             "placeholder_hints": [
+                 "Figure 1 from the paper: 3D-printed vertical fiber arrays. Cross-section of a strand (250 μm with the printing direction arrow), aligned vs. staggered top-view configurations, hydrophobic (120.3°) and hydrophilic (87.3°) contact angles, and the D₀ / U / dp / χ dimensional impact parameters.",
+                 "Figure 2 from the paper: illustration of trans-fiber motions. (a) Normal, (b) Wave, (c) Bisection, (d) Wave + Bisection. These lateral motions are unique to vertical arrays.",
+             ]},
+            {"id": "section-model", "title": "An energy-conservation model for penetration depth",
+             "explanation": "We balance kinetic energy at impact against the work done by drag and capillary forces on the descending liquid front. In the sparse regime (Oh < 4 × 10⁻²) the prediction is linear in We; experiments confirm.",
+             "figs": 1,
+             "placeholder_hint": "Figure 7 from the paper: graphical accompaniment to the penetration-depth model. Cylindrical drop projection becoming a rectangular steady-state footprint inside the array, with the supporting area-projection image sequence at the bottom."},
+            {"id": "section-wettability-vert", "title": "Capillarity helps hydrophilic vertical arrays penetrate",
+             "explanation": "In contrast to horizontal fibers, vertical hydrophilic arrays draw additional liquid downward via capillarity, deepening the wetted column.",
+             "figs": 1,
+             "placeholder_hint": "Figure 8 from the paper: normalized maximum penetration depth versus Weber number, hydrophilic (left) and hydrophobic (right) panels with linear k₁·We + k₂ fits across multiple densities. Hydrophilic curves sit above hydrophobic; this is the wettability inversion versus horizontal fibers."},
+            {"id": "section-wicking", "title": "A Bond-number criterion for capillary wicking",
+             "explanation": "Whenever the Bond number of the residual drop falls below 0.11, the trapped liquid wicks vertically along the fibers, extending the effective penetration depth beyond what impact alone would predict.",
+             "figs": 1,
+             "placeholder_hint": "Figure 6 from the paper: image sequences of drops impacting vertical arrays at We = 9.4 (max spread + lateral spread at base), We = 0.75 (low-We rebound + capillary action, the LRC regime), and We = 8.7 (deceleration above the fiber array)."},
         ],
         "journal": "Physics of Fluids",
         "journal_abbrev": "Phys. Fluids",
@@ -314,7 +329,15 @@ PAPERS = [
         "pub_year": "2025",
         "supp_pdf_source": None,
         "videos": [],
-        "videos_note": "Supplementary movies for this paper are pending upload to YouTube. Drop YouTube IDs into PAPERS[1]['videos'] in build.py and re-run.",
+        "videos_note": (
+            "Supplementary movies pending upload to YouTube (≈5 expected, based on the paper's "
+            "'multimedia available online' tags):\n"
+            "• Movie 1: Eight impact classifications (pairs with Fig. 3)\n"
+            "• Movie 2: Contact angles, apparent vs. actual (pairs with Fig. 4)\n"
+            "• Movie 3: Max spread at fiber tips, We = 9.4 (pairs with Fig. 6a)\n"
+            "• Movie 4: Constant penetration deceleration (pairs with Figs. 6b and 5d)\n"
+            "• Movie 5: Drop deceleration above the fiber array (pairs with Fig. 6c)"
+        ),
         "keywords": "drop impact, vertical fibers, mammalian fur, Weber number, Ohnesorge number, capillary infiltration, Bond number, energy conservation",
         "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and the contributions of undergraduate researchers in the Dickerson Lab.",
         "bibkey": "rible2025vertical",
@@ -855,12 +878,18 @@ def result_blocks(paper):
                     </div>"""))
             fig_html = '<div class="columns is-vcentered figure-pair">\n' + "\n".join(cols) + "\n</div>"
         elif r["figs"] == 2:
+            hints = r.get("placeholder_hints", ["", ""])
+            left_hint = (f'<p class="is-size-7 placeholder-hint">{html.escape(hints[0])}</p>'
+                         if len(hints) > 0 and hints[0] else "")
+            right_hint = (f'<p class="is-size-7 placeholder-hint">{html.escape(hints[1])}</p>'
+                          if len(hints) > 1 and hints[1] else "")
             fig_html = textwrap.dedent(f"""\
                 <div class="columns is-vcentered figure-pair">
                   <div class="column">
                     <div class="placeholder-box placeholder-16x9">
                       <div class="placeholder-label">
                         <p><strong>Figure placeholder</strong></p>
+                        {left_hint}
                         <p class="is-size-7">Drop into <code>static/images/{paper['slug']}/</code> and replace.</p>
                       </div>
                     </div>
@@ -869,16 +898,21 @@ def result_blocks(paper):
                     <div class="placeholder-box placeholder-16x9">
                       <div class="placeholder-label">
                         <p><strong>Figure placeholder</strong></p>
+                        {right_hint}
                         <p class="is-size-7">Drop into <code>static/images/{paper['slug']}/</code> and replace.</p>
                       </div>
                     </div>
                   </div>
                 </div>""")
         else:
+            hint = r.get("placeholder_hint", "")
+            hint_html = (f'<p class="is-size-7 placeholder-hint">{html.escape(hint)}</p>'
+                         if hint else "")
             fig_html = textwrap.dedent(f"""\
                 <div class="placeholder-box placeholder-wide">
                   <div class="placeholder-label">
                     <p><strong>Figure placeholder</strong></p>
+                    {hint_html}
                     <p class="is-size-7">Drop into <code>static/images/{paper['slug']}/</code> and replace.</p>
                   </div>
                 </div>""")
@@ -897,12 +931,16 @@ def result_blocks(paper):
 
 def video_tiles(paper):
     if not paper["videos"]:
+        # Allow videos_note to be a multi-line string with bullet points.
+        # Each '\n' becomes a <br>; the placeholder box widens to a wide
+        # aspect so the bulleted list has room to breathe.
+        note_html = html.escape(paper["videos_note"]).replace("\n", "<br>")
         return textwrap.dedent(f"""\
             <div class="column is-full">
-              <div class="placeholder-box placeholder-16x9">
+              <div class="placeholder-box placeholder-wide videos-pending">
                 <div class="placeholder-label">
                   <span class="icon is-large"><i class="fab fa-youtube fa-2x"></i></span>
-                  <p><strong>{html.escape(paper['videos_note'])}</strong></p>
+                  <p class="videos-note">{note_html}</p>
                 </div>
               </div>
             </div>""")

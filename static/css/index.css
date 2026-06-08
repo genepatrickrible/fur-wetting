@@ -168,6 +168,27 @@ html { scroll-behavior: smooth; }
   padding: 0.05em 0.4em;
 }
 
+/* Per-figure description shown inside a placeholder box. Helps the author
+   match each empty slot to the exact figure number from the paper. */
+.placeholder-hint {
+  max-width: 36rem;
+  margin: 0.5rem auto !important;
+  color: #2b3340;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+/* Multi-line bulleted list inside the empty-videos placeholder. */
+.placeholder-box.videos-pending { aspect-ratio: auto; min-height: 14rem; padding: 1.5rem; }
+.videos-note {
+  max-width: 38rem;
+  margin: 0.5rem auto !important;
+  color: #2b3340;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
+}
+
 /* ----- "Firsts" cards ----- */
 .firsts-sub { color: #6b7280; margin-bottom: 1.5rem !important; }
 
