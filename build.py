@@ -1027,8 +1027,10 @@ def link_buttons(paper, canonical_subpage_url):
             </div>
           </div>
         </span>"""))
-    # Site-wide Schedule + Discussion (Phase 5b engagement buttons).
-    btns.extend(engagement_buttons())
+    # Note: Schedule + Discussion are intentionally NOT appended here.
+    # They render in their own `.publication-links.engagement-row` block in
+    # the template, so they always sit on a visually distinct second row
+    # below the per-paper buttons regardless of viewport width.
     return "\n".join(btns)
 
 
@@ -1175,6 +1177,9 @@ SUBPAGE_TEMPLATE = """<!DOCTYPE html>
           </p>
           <div class="publication-links">
             {link_buttons}
+          </div>
+          <div class="publication-links engagement-row">
+            {engagement_buttons}
           </div>
         </div>
       </div>
@@ -1353,6 +1358,8 @@ HUB_TEMPLATE = """<!DOCTYPE html>
                 <span class="icon"><i class="fas fa-quote-right"></i></span><span>Cite all six</span>
               </a>
             </span>
+          </div>
+          <div class="publication-links engagement-row">
             {engagement_buttons}
           </div>
         </div>
@@ -1469,6 +1476,7 @@ def render_subpage(paper):
         contact_line=contact_line(paper),
         journal_badge=journal_badge(paper),
         link_buttons=link_buttons(paper, canonical),
+        engagement_buttons="\n".join(engagement_buttons()),
         teaser_section=teaser_videos_section(paper),
         abstract=science_text(paper["abstract"]),
         firsts_cards=firsts_cards(paper),

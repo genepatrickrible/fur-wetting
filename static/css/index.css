@@ -71,6 +71,11 @@ html { scroll-behavior: smooth; }
   border: 1px dashed #b5b5b5 !important;
 }
 
+/* Site-wide engagement buttons (Schedule + Discussion) render in their own
+   row below the per-paper buttons. The top margin matches the gap value
+   of `.publication-links` so the spacing reads as a natural row gap. */
+.publication-links.engagement-row { margin-top: 0.6rem; }
+
 /* Cite dropdown */
 .cite-dropdown .dropdown-menu { min-width: 11rem; }
 .cite-dropdown .dropdown-item { display: flex; align-items: center; gap: 0.5rem; }
