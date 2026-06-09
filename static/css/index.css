@@ -223,6 +223,21 @@ html { scroll-behavior: smooth; }
 .result-block .title.is-4 { margin-bottom: 1rem; }
 .figure-pair { margin-bottom: 1rem; }
 
+/* On a paired result-block where the two figures have very different
+   aspect ratios (e.g. vertical-fibers Fig 1 near-square versus Fig 2
+   portrait), the natural-width portrait one renders much taller.
+   Cap the right figure at 50% of its column width on desktop and
+   center it, so the two end up roughly the same visual height.
+   The cap is lifted on mobile where the columns stack anyway. */
+@media (min-width: 769px) {
+  .figure-pair > .column:nth-child(2) figure.image img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
 /* ----- Firsts-grid video tile (upper-left cell when firsts_video_src is set) ----- */
 .first-card-video {
   padding: 0 !important;
