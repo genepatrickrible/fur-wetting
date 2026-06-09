@@ -344,7 +344,7 @@ PAPERS = [
             "• Movie 5: Drop deceleration above the fiber array (pairs with Fig. 6c)"
         ),
         "keywords": "drop impact, vertical fibers, mammalian fur, Weber number, Ohnesorge number, capillary infiltration, Bond number, energy conservation",
-        "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and the contributions of undergraduate researchers in the Dickerson Lab.",
+        "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank undergraduate research assistants at the Fluids and Structures Laboratory, Syed Jaffar Raza for bespoke code contributions, Alexander Bottoms for editing some of the supplementary videos, and Michael Spinazzola III for fine-tuning the laser-cutting setup and parameters for our vertical fiber arrays. We also give special thanks to Mohammad Alipanahrostami for coating our samples.",
         "bibkey": "rible2025vertical",
         "tagline_card": "An energy-conservation model in which penetration scales linearly with We for sparse vertical fibers; hydrophilic vertical arrays penetrate more than hydrophobic ones (opposite to horizontal).",
     },
