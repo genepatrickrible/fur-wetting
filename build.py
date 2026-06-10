@@ -307,7 +307,8 @@ PAPERS = [
              "section": "section-wicking"},
             {"kind": "video",
              "src": "static/videos/vertical-fibers/capillary.mp4",
-             "type": "video/mp4"},
+             "type": "video/mp4",
+             "align": "left"},
         ],
         "abstract": (
             "This experimental work investigates the impact dynamics of drops on vertically "
@@ -858,17 +859,19 @@ def firsts_cards(paper, base_path=""):
             is_lone_last = (n % 2 == 1) and (i == n - 1)
             col_class = "column is-half is-offset-one-quarter" if is_lone_last else "column is-half"
             if c["kind"] == "image":
+                align_class = " align-left" if c.get("align") == "left" else ""
                 cells.append(textwrap.dedent(f"""\
                     <div class="{col_class}">
-                      <div class="first-card first-card-image">
+                      <div class="first-card first-card-image{align_class}">
                         <img class="firsts-image" src="../{c['src']}" alt="{attr(c.get('alt', ''))}">
                       </div>
                     </div>"""))
             elif c["kind"] == "video":
                 type_attr = f' type="{attr(c["type"])}"' if c.get("type") else ""
+                align_class = " align-left" if c.get("align") == "left" else ""
                 cells.append(textwrap.dedent(f"""\
                     <div class="{col_class}">
-                      <div class="first-card first-card-video">
+                      <div class="first-card first-card-video{align_class}">
                         <video class="firsts-video" muted autoplay loop playsinline preload="metadata">
                           <source src="../{c['src']}"{type_attr}>
                         </video>

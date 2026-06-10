@@ -271,6 +271,17 @@ html { scroll-behavior: smooth; }
   object-fit: contain;
   object-position: right center;
 }
+/* Per-cell alignment override: set `align: "left"` on a firsts_cells
+   image/video entry to push the media to the LEFT edge of its column
+   instead of the default right. */
+.first-card-image.align-left,
+.first-card-video.align-left {
+  justify-content: flex-start;
+}
+.first-card-image.align-left .firsts-image,
+.first-card-video.align-left .firsts-video {
+  object-position: left center;
+}
 /* Pull the media column inward so the capped-height box doesn't leave a
    gap at the top; instead the empty space splits above and below.
    `:has()` is supported in Chrome 105+, Safari 15.4+, Firefox 121+. */
