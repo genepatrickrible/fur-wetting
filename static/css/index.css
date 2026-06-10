@@ -350,7 +350,7 @@ html { scroll-behavior: smooth; }
    explanation paragraph so it wraps onto enough lines to cover the
    floated video's vertical extent. Tunable via the CSS variable. */
 :root { --pre-figure-float-text-width: 11rem; }
-.result-block:has(.pre-figure-media.float-left) .content p {
+.result-block:has(.pre-figure-media.float-left) .content {
   max-width: var(--pre-figure-float-text-width);
 }
 
