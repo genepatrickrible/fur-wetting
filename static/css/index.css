@@ -318,6 +318,31 @@ html { scroll-behavior: smooth; }
   background: #000;
 }
 
+/* Float variant: the floated media pulls out of normal flow so the
+   explanation paragraph wraps around it. Tiny width (~1/32 of a
+   typical ~800 px column) makes it an inline-decoration scale icon.
+   Adjust --pre-figure-video-float-width if you want it bigger/smaller.
+   Clearfix on .result-block ensures the next sibling section doesn't
+   start beside a floated child of the previous one. */
+:root { --pre-figure-video-float-width: 25px; }
+.pre-figure-media.float-left {
+  float: left;
+  max-width: none;
+  width: var(--pre-figure-video-float-width);
+  margin: 0.25rem 0.75rem 0.5rem 0;
+}
+.pre-figure-media.float-right {
+  float: right;
+  max-width: none;
+  width: var(--pre-figure-video-float-width);
+  margin: 0.25rem 0 0.5rem 0.75rem;
+}
+.pre-figure-media.float-left .pre-figure-video,
+.pre-figure-media.float-right .pre-figure-video {
+  border-radius: 3px;
+}
+.result-block::after { content: ""; display: table; clear: both; }
+
 /* ----- Responsive YouTube embeds ----- */
 .video-embed {
   position: relative;

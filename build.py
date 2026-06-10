@@ -280,11 +280,14 @@ PAPERS = [
         # Explicit cell order for the "Firsts in this work" grid. Each cell
         # is either a card, an image, or a looping video. Renderer overrides
         # the default firsts-list layout when firsts_cells is set.
-        # Layout (3 rows x 2 cols):
+        # Layout (4 rows):
         #   Row 1: VerticalFur.jpeg     | First drop-impact study of vertical fiber arrays
         #   Row 2: Energy-conservation model | Wettability inversion versus horizontal
-        #   Row 3: Capillary wicking below a Bond-number threshold | Liquid penetration decelerates at a constant rate
+        #   Row 3: Capillary wicking below a Bond-number threshold | capillary.mp4 loop
+        #   Row 4: Liquid penetration decelerates at a constant rate (full-width)
         # The lone image cell (row 1 left) is right-aligned via CSS.
+        # The row-3 video is left-aligned within its column via `align: "left"`.
+        # The row-4 card spans the full row via `is_full: True`.
         "firsts_cells": [
             {"kind": "image",
              "src": "static/images/vertical-fibers/VerticalFur.jpeg",
@@ -305,10 +308,15 @@ PAPERS = [
              "title": "Capillary wicking below a Bond-number threshold",
              "summary": "When Bo ⩽ 0.11 the penetrated liquid wicks vertically along the fibers, extending the wetted footprint beyond the kinematic depth.",
              "section": "section-wicking"},
+            {"kind": "video",
+             "src": "static/videos/vertical-fibers/capillary.mp4",
+             "type": "video/mp4",
+             "align": "left"},
             {"kind": "card", "icon": "fas fa-chart-line",
              "title": "Liquid penetration decelerates at a constant rate",
              "summary": "The penetrating liquid front decelerates at a constant rate inside the array. That lets us predict the maximum penetration depth from a single measurement once the drop reaches the base. Denser arrays are more prone to rebound, contributing to a greater impact force.",
-             "section": "section-deceleration"},
+             "section": "section-deceleration",
+             "is_full": True},
         ],
         "abstract": (
             "This experimental work investigates the impact dynamics of drops on vertically "
@@ -373,11 +381,10 @@ PAPERS = [
                  {"kind": "local",
                   "src": "static/videos/vertical-fibers/capillary.mp4",
                   "type": "video/mp4",
-                  "loop": True},
+                  "loop": True,
+                  "float": "left"},
              ],
-             "figs": 1,
-             "image": "static/images/vertical-fibers/fig6.png",
-             "alt": "Figure 6 from the paper: image sequences of drops impacting vertical arrays at We = 9.4 (max spread plus lateral spread at base), We = 0.75 (low-We rebound plus capillary action, the LRC regime), and We = 8.7 (deceleration above the fiber array)."},
+             "figs": 0},
             {"id": "section-deceleration", "title": "Liquid penetration decelerates at a constant rate",
              "explanation": "Penetration depth versus time for a drop impacting a 50 strands/cm² array at We = 15.5 shows the liquid front decelerating at a constant rate inside the array. This lets us predict the maximum penetration depth that the drop body would have achieved if the fibers had been long enough, even when the drop reaches the base mid-experiment. As fiber density rises, drops are more prone to rebound, contributing to a greater impact force. When the rate of liquid ingress reaches its maximum at τ < 1, the majority of the liquid mass still resides above the array; that mass then either rebounds, or its downward motion decelerates.",
              "pre_media": [
@@ -387,7 +394,9 @@ PAPERS = [
                   "label": "Movie 5: Drop deceleration above the array"},
              ],
              "pre_media_layout": "row",
-             "figs": 0},
+             "figs": 1,
+             "image": "static/images/vertical-fibers/fig6.png",
+             "alt": "Figure 6 from the paper: image sequences of drops impacting vertical arrays at We = 9.4 (max spread plus lateral spread at base), We = 0.75 (low-We rebound plus capillary action, the LRC regime), and We = 8.7 (deceleration above the fiber array)."},
         ],
         "journal": "Physics of Fluids",
         "journal_abbrev": "Phys. Fluids",
@@ -887,8 +896,13 @@ def firsts_cards(paper, base_path=""):
     if paper.get("firsts_cells"):
         n = len(paper["firsts_cells"])
         for i, c in enumerate(paper["firsts_cells"]):
-            is_lone_last = (n % 2 == 1) and (i == n - 1)
-            col_class = "column is-half is-offset-one-quarter" if is_lone_last else "column is-half"
+            # Full-width cell? Otherwise apply lone-last centering when the
+            # half-width count is odd.
+            if c.get("is_full"):
+                col_class = "column is-full"
+            else:
+                is_lone_last = (n % 2 == 1) and (i == n - 1)
+                col_class = "column is-half is-offset-one-quarter" if is_lone_last else "column is-half"
             if c["kind"] == "image":
                 align_class = " align-left" if c.get("align") == "left" else ""
                 cells.append(textwrap.dedent(f"""\
@@ -978,8 +992,11 @@ def render_pre_media(items, layout="stacked"):
         elif m["kind"] == "local":
             loop_attr = " loop" if m.get("loop") else ""
             type_attr = f' type="{attr(m["type"])}"' if m.get("type") else ""
+            # Optional float lets the explanation paragraph wrap text around
+            # the video. CSS handles sizing + margin for the floated variant.
+            float_class = f' float-{m["float"]}' if m.get("float") in ("left", "right") else ""
             blocks.append(textwrap.dedent(f"""\
-                <div class="pre-figure-media">
+                <div class="pre-figure-media{float_class}">
                   <video class="pre-figure-video" muted autoplay{loop_attr} playsinline preload="metadata">
                     <source src="../{m['src']}"{type_attr}>
                   </video>
