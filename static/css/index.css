@@ -327,7 +327,7 @@ html { scroll-behavior: smooth; }
 /* Width controls both the visible width and (via aspect ratio) the height
    of the floated video; tweak to make the video's bottom edge align
    with the bottom of the wrapping text. */
-:root { --pre-figure-video-float-width: 115px; }
+:root { --pre-figure-video-float-width: 138px; }
 .pre-figure-media.float-left {
   float: left;
   max-width: none;
