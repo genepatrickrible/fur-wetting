@@ -274,15 +274,40 @@ PAPERS = [
         # container and applies muted/autoplay/loop/playsinline automatically.
         "teaser_videos": [
             {"label": "Drop on a vertical fiber array",
-             "src": "static/videos/vertical-fibers/droponverticalfiberarray.mp4",
+             "src": "static/videos/vertical-fibers/droponverticalfiberarray_v1.mp4",
              "type": "video/mp4"},
         ],
-        # Centered intro image rendered between the "Firsts in this work"
-        # subtitle and the firsts grid.
-        "firsts_intro_image": {
-            "src": "static/images/vertical-fibers/VerticalFur.jpeg",
-            "alt": "Photograph of vertically oriented fur (the natural biological inspiration for the experimental fiber arrays in this paper).",
-        },
+        # Explicit cell order for the "Firsts in this work" grid. Each cell
+        # is either a card, an image, or a looping video. Renderer overrides
+        # the default firsts-list layout when firsts_cells is set.
+        # Layout (3 rows x 2 cols):
+        #   Row 1: VerticalFur.jpeg     | First drop-impact study of vertical fiber arrays
+        #   Row 2: Energy-conservation model | Wettability inversion versus horizontal
+        #   Row 3: capillary.mp4 loop   | Capillary wicking below a Bond-number threshold
+        "firsts_cells": [
+            {"kind": "image",
+             "src": "static/images/vertical-fibers/VerticalFur.jpeg",
+             "alt": "Photograph of vertically oriented fur, the natural biological inspiration for the experimental fiber arrays in this paper."},
+            {"kind": "card", "icon": "fas fa-arrows-up-down",
+             "title": "First drop-impact study of vertical fiber arrays",
+             "summary": "A systematic investigation of how vertical orientation reshapes impact dynamics compared to the horizontal case.",
+             "section": "section-vertical"},
+            {"kind": "card", "icon": "fas fa-calculator",
+             "title": "Energy-conservation penetration model",
+             "summary": "An analytical relationship between Weber number and penetration depth, validated against the experiments.",
+             "section": "section-model"},
+            {"kind": "card", "icon": "fas fa-droplet",
+             "title": "Wettability inversion versus horizontal",
+             "summary": "Vertical hydrophilic arrays penetrate MORE than hydrophobic counterparts, opposite to the horizontal case, because gravity-aligned capillarity dominates.",
+             "section": "section-wettability-vert"},
+            {"kind": "video",
+             "src": "static/videos/vertical-fibers/capillary.mp4",
+             "type": "video/mp4"},
+            {"kind": "card", "icon": "fas fa-arrow-down",
+             "title": "Capillary wicking below a Bond-number threshold",
+             "summary": "When Bo ⩽ 0.11 the penetrated liquid wicks vertically along the fibers, extending the wetted footprint beyond the kinematic depth.",
+             "section": "section-wicking"},
+        ],
         "abstract": (
             "This experimental work investigates the impact dynamics of drops on vertically "
             "oriented, three-dimensional (3D)-printed fiber arrays with variations in packing "
@@ -812,11 +837,57 @@ def citation_text_html(paper) -> str:
 def firsts_cards(paper, base_path=""):
     """base_path: '' for subpage (anchor stays on same page), or 'slug/' for hub.
 
-    When ``paper["firsts_video_src"]`` is set, an autoplay-loop video tile is
-    prepended as the upper-left cell of the grid. Effective cell count for the
-    lone-last-centering trick includes this video.
+    Two layout modes:
+
+    1. New explicit-cells mode (`firsts_cells` set on the paper):
+       The cells list contains image/video/card cells in exact display order.
+       Each cell occupies one Bulma `.column is-half` slot in the grid.
+
+    2. Legacy mode (`firsts` + optional `firsts_video_src`):
+       Renders the firsts list as cards, optionally prepended with a video
+       tile in the upper-left. Falls back to lone-last-centering when the
+       resulting cell count is odd.
     """
     cells = []
+
+    # New mode: explicit firsts_cells
+    if paper.get("firsts_cells"):
+        n = len(paper["firsts_cells"])
+        for i, c in enumerate(paper["firsts_cells"]):
+            is_lone_last = (n % 2 == 1) and (i == n - 1)
+            col_class = "column is-half is-offset-one-quarter" if is_lone_last else "column is-half"
+            if c["kind"] == "image":
+                cells.append(textwrap.dedent(f"""\
+                    <div class="{col_class}">
+                      <div class="first-card first-card-image">
+                        <img class="firsts-image" src="../{c['src']}" alt="{attr(c.get('alt', ''))}">
+                      </div>
+                    </div>"""))
+            elif c["kind"] == "video":
+                type_attr = f' type="{attr(c["type"])}"' if c.get("type") else ""
+                cells.append(textwrap.dedent(f"""\
+                    <div class="{col_class}">
+                      <div class="first-card first-card-video">
+                        <video class="firsts-video" muted autoplay loop playsinline preload="metadata">
+                          <source src="../{c['src']}"{type_attr}>
+                        </video>
+                      </div>
+                    </div>"""))
+            elif c["kind"] == "card":
+                href = f"{base_path}#{c['section']}"
+                cells.append(textwrap.dedent(f"""\
+                    <div class="{col_class}">
+                      <a class="first-card-link" href="{href}">
+                        <div class="first-card">
+                          <span class="icon has-text-info"><i class="{c['icon']} fa-lg"></i></span>
+                          <h3 class="is-size-5 has-text-weight-bold">{html.escape(c['title'])}</h3>
+                          <p>{science_text(c['summary'])}</p>
+                        </div>
+                      </a>
+                    </div>"""))
+        return "\n".join(cells)
+
+    # Legacy mode: firsts list + optional video src
     video_src = paper.get("firsts_video_src")
     if video_src:
         cells.append(textwrap.dedent(f"""\
@@ -830,7 +901,6 @@ def firsts_cards(paper, base_path=""):
     n = len(paper["firsts"]) + (1 if video_src else 0)
     for i, f in enumerate(paper["firsts"]):
         href = f"{base_path}#{f['section']}"
-        # Lone-last centering (odd count, last item).
         cell_index = i + (1 if video_src else 0)
         is_lone_last = (n % 2 == 1) and (cell_index == n - 1)
         col_class = "column is-half is-offset-one-quarter" if is_lone_last else "column is-half"
