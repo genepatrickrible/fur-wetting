@@ -269,6 +269,14 @@ PAPERS = [
             "Department of Mechanical, Aerospace and Biomedical Engineering, University of Tennessee, Knoxville, Tennessee 37996, USA",
         ],
         "contact_email": "grible@vols.utk.edu",
+        # Looping teaser video rendered between the hero and the abstract.
+        # Single-video case: the renderer wraps it in the teaser-grid flex
+        # container and applies muted/autoplay/loop/playsinline automatically.
+        "teaser_videos": [
+            {"label": "Drop on a vertical fiber array",
+             "src": "static/videos/vertical-fibers/droponverticalfiberarray.mp4",
+             "type": "video/mp4"},
+        ],
         "abstract": (
             "This experimental work investigates the impact dynamics of drops on vertically "
             "oriented, three-dimensional (3D)-printed fiber arrays with variations in packing "
