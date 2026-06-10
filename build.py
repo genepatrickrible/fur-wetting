@@ -283,7 +283,8 @@ PAPERS = [
         # Layout (3 rows x 2 cols):
         #   Row 1: VerticalFur.jpeg     | First drop-impact study of vertical fiber arrays
         #   Row 2: Energy-conservation model | Wettability inversion versus horizontal
-        #   Row 3: capillary.mp4 loop   | Capillary wicking below a Bond-number threshold
+        #   Row 3: Capillary wicking below a Bond-number threshold | capillary.mp4 loop
+        # Both media cells are right-aligned within their column via CSS.
         "firsts_cells": [
             {"kind": "image",
              "src": "static/images/vertical-fibers/VerticalFur.jpeg",
@@ -300,13 +301,13 @@ PAPERS = [
              "title": "Wettability inversion versus horizontal",
              "summary": "Vertical hydrophilic arrays penetrate MORE than hydrophobic counterparts, opposite to the horizontal case, because gravity-aligned capillarity dominates.",
              "section": "section-wettability-vert"},
-            {"kind": "video",
-             "src": "static/videos/vertical-fibers/capillary.mp4",
-             "type": "video/mp4"},
             {"kind": "card", "icon": "fas fa-arrow-down",
              "title": "Capillary wicking below a Bond-number threshold",
              "summary": "When Bo ⩽ 0.11 the penetrated liquid wicks vertically along the fibers, extending the wetted footprint beyond the kinematic depth.",
              "section": "section-wicking"},
+            {"kind": "video",
+             "src": "static/videos/vertical-fibers/capillary.mp4",
+             "type": "video/mp4"},
         ],
         "abstract": (
             "This experimental work investigates the impact dynamics of drops on vertically "
