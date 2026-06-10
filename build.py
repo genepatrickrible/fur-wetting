@@ -374,16 +374,20 @@ PAPERS = [
         "pub_date_iso": "2025-02-04",
         "pub_year": "2025",
         "supp_pdf_source": None,
-        "videos": [],
-        "videos_note": (
-            "Supplementary movies pending upload to YouTube (≈5 expected, based on the paper's "
-            "'multimedia available online' tags):\n"
-            "• Movie 1: Eight impact classifications (pairs with Fig. 3)\n"
-            "• Movie 2: Contact angles, apparent vs. actual (pairs with Fig. 4)\n"
-            "• Movie 3: Max spread at fiber tips, We = 9.4 (pairs with Fig. 6a)\n"
-            "• Movie 4: Constant penetration deceleration (pairs with Figs. 6b and 5d)\n"
-            "• Movie 5: Drop deceleration above the fiber array (pairs with Fig. 6c)"
-        ),
+        "videos": [
+            {"label": "Movie 1: Eight impact classifications", "youtube_id": "QUVgO2ej2Xs",
+             "caption": "Image sequences of all eight observed impact classifications on vertically oriented fiber arrays, paired with normalized temporal heat maps. Pairs with Fig. 3."},
+            {"label": "Movie 2: Contact angles, apparent vs. actual", "youtube_id": "70T4kgBaItM",
+             "caption": "The advancing contact angles appear hydrophilic due to shadowing; closer inspection shows they exceed 90°. Pairs with Fig. 4."},
+            {"label": "Movie 3: Maximum drop spread at fiber tips, We = 9.4", "youtube_id": "wonSRuHMXi4",
+             "caption": "Max drop spread at the fiber tips, fiber-prevented spreading, enhanced penetration, and lateral spread at the base. Pairs with Fig. 6(a)."},
+            {"label": "Movie 4: Constant deceleration of liquid front", "youtube_id": "-skOA36BdPw",
+             "caption": "The penetrating liquid front decelerates at a constant rate due to drop interaction with the fiber shafts; rebound follows above the array. Pairs with Figs. 6(b) and 5(d)."},
+            {"label": "Movie 5: Drop deceleration above the array, We = 8.7", "youtube_id": "DXUviuUxWIg",
+             "caption": "A We = 8.7 drop decelerates above the fiber array due to impact force without penetrating. Pairs with Fig. 6(c)."},
+        ],
+        "videos_note": "",
+        "youtube_playlist_url": "https://www.youtube.com/playlist?list=PLaxoeadWOB0oCZIeNvpSKCT-catNuo7R8",
         "keywords": "drop impact, vertical fibers, mammalian fur, Weber number, Ohnesorge number, capillary infiltration, Bond number, energy conservation",
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank undergraduate research assistants at the Fluids and Structures Laboratory, Syed Jaffar Raza for bespoke code contributions, Alexander Bottoms for editing some of the supplementary videos, and Michael Spinazzola III for fine-tuning the laser-cutting setup and parameters for our vertical fiber arrays. We also give special thanks to Mohammad Alipanahrostami for coating our samples.",
         "bibkey": "rible2025vertical",
