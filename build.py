@@ -350,6 +350,10 @@ PAPERS = [
              "pre_media": [
                  {"kind": "youtube", "youtube_id": "QUVgO2ej2Xs",
                   "label": "Movie 1: Eight impact classifications"},
+                 {"kind": "image",
+                  "path": "static/images/vertical-fibers/fig5.png",
+                  "label": "Figure 5",
+                  "alt": "Figure 5 from the paper: (a, b) Modified aspect ratio AR* vs Weber number for observed impact classifications, hydrophilic (left) and hydrophobic (right). Solid symbols mark impacts where the drop did not reach the bottom of the fiber array; symbols with a black outline mark impacts where the drop penetrated to the bottom. (c) Occurrence of drop rebound in the AR*-We spectrum in vertical fibers. (d) Theoretical maximum penetration depth predicted from a constant-deceleration model when the impacted drop reaches the base of the array."},
              ],
              "figs": 2,
              "images": [
@@ -988,6 +992,21 @@ def render_pre_media(items, layout="stacked"):
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                   </div>
+                </div>"""))
+        elif m["kind"] == "image":
+            # Static figure rendered inline among the pre-figure media.
+            # Useful when a section wants a video plus an auxiliary figure
+            # above the main figure block.
+            label_html = (
+                f'<h4 class="is-size-6 has-text-weight-bold has-text-centered">{html.escape(m["label"])}</h4>'
+                if m.get("label") else ""
+            )
+            blocks.append(textwrap.dedent(f"""\
+                <div class="pre-figure-media">
+                  {label_html}
+                  <figure class="image">
+                    <img src="../{m['path']}" alt="{attr(m.get('alt', ''))}">
+                  </figure>
                 </div>"""))
         elif m["kind"] == "local":
             loop_attr = " loop" if m.get("loop") else ""

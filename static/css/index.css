@@ -324,7 +324,10 @@ html { scroll-behavior: smooth; }
    Adjust --pre-figure-video-float-width if you want it bigger/smaller.
    Clearfix on .result-block ensures the next sibling section doesn't
    start beside a floated child of the previous one. */
-:root { --pre-figure-video-float-width: 25px; }
+/* The Firsts-grid capillary tile renders at ~105 px wide (its height is
+   capped at var(--firsts-media-height) = 220 px and the natural aspect
+   ratio fills width). 127 px = 1.20 * 105, i.e. 20% larger linearly. */
+:root { --pre-figure-video-float-width: 127px; }
 .pre-figure-media.float-left {
   float: left;
   max-width: none;
