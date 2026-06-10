@@ -248,11 +248,13 @@
   </a>
 </div>
 <div class="column is-half">
-  <div class="first-card first-card-video align-left">
-    <video class="firsts-video" muted autoplay loop playsinline preload="metadata">
-      <source src="../static/videos/vertical-fibers/capillary.mp4" type="video/mp4">
-    </video>
-  </div>
+  <a class="first-card-link" href="#section-deceleration">
+    <div class="first-card">
+      <span class="icon has-text-info"><i class="fas fa-chart-line fa-lg"></i></span>
+      <h3 class="is-size-5 has-text-weight-bold">Liquid penetration decelerates at a constant rate</h3>
+      <p>The penetrating liquid front decelerates at a constant rate inside the array. That lets us predict the maximum penetration depth from a single measurement once the drop reaches the base. Denser arrays are more prone to rebound, contributing to a greater impact force.</p>
+    </div>
+  </a>
 </div>
     </div>
     
@@ -327,6 +329,18 @@
             </div>
             <div class="result-block" id="section-wicking">
               <h3 class="title is-4">A Bond-number criterion for capillary wicking</h3>
+              <div class="pre-figure-media">
+  <video class="pre-figure-video" muted autoplay loop playsinline preload="metadata">
+    <source src="../static/videos/vertical-fibers/capillary.mp4" type="video/mp4">
+  </video>
+</div>
+<figure class="image">
+  <img src="../static/images/vertical-fibers/fig6.png" alt="Figure 6 from the paper: image sequences of drops impacting vertical arrays at We = 9.4 (max spread plus lateral spread at base), We = 0.75 (low-We rebound plus capillary action, the LRC regime), and We = 8.7 (deceleration above the fiber array).">
+</figure>
+              <p class="content">Whenever the Bond number of the residual drop falls below 0.11, the trapped liquid wicks vertically along the fibers, extending the effective penetration depth beyond what impact alone would predict.</p>
+            </div>
+            <div class="result-block" id="section-deceleration">
+              <h3 class="title is-4">Liquid penetration decelerates at a constant rate</h3>
               <div class="columns is-multiline pre-figure-row">
 <div class="column is-half">
 <div class="pre-figure-media">
@@ -351,10 +365,8 @@
 </div>
 </div>
 </div>
-<figure class="image">
-  <img src="../static/images/vertical-fibers/fig6.png" alt="Figure 6 from the paper: image sequences of drops impacting vertical arrays at We = 9.4 (max spread plus lateral spread at base), We = 0.75 (low-We rebound plus capillary action, the LRC regime), and We = 8.7 (deceleration above the fiber array).">
-</figure>
-              <p class="content">Whenever the Bond number of the residual drop falls below 0.11, the trapped liquid wicks vertically along the fibers, extending the effective penetration depth beyond what impact alone would predict.</p>
+
+              <p class="content">Penetration depth versus time for a drop impacting a 50 strands/cm² array at <i>We</i> = 15.5 shows the liquid front decelerating at a constant rate inside the array. This lets us predict the maximum penetration depth that the drop body would have achieved if the fibers had been long enough, even when the drop reaches the base mid-experiment. As fiber density rises, drops are more prone to rebound, contributing to a greater impact force. When the rate of liquid ingress reaches its maximum at <i>τ</i> &lt; 1, the majority of the liquid mass still resides above the array; that mass then either rebounds, or its downward motion decelerates.</p>
             </div>
   </div>
 </section>
