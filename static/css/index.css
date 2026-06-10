@@ -354,7 +354,7 @@ html { scroll-behavior: smooth; }
    minus the float's width minus its right margin. So with a 127 px
    floated video plus 0.75 rem right margin, a block width of 20 rem
    leaves ~11 rem of text alongside the float. */
-:root { --pre-figure-float-text-width: 17rem; }
+:root { --pre-figure-float-text-width: 20rem; }
 .result-block:has(.pre-figure-media.float-left) .content {
   max-width: var(--pre-figure-float-text-width);
 }
