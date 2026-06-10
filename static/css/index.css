@@ -346,10 +346,15 @@ html { scroll-behavior: smooth; }
 }
 .result-block::after { content: ""; display: table; clear: both; }
 
-/* When a result block has a left-floated pre-figure media, narrow the
-   explanation paragraph so it wraps onto enough lines to cover the
-   floated video's vertical extent. Tunable via the CSS variable. */
-:root { --pre-figure-float-text-width: 11rem; }
+/* When a result block has a left-floated pre-figure media, cap the
+   width of the .content block so the text wraps onto enough lines
+   to cover the floated video's vertical extent. The variable controls
+   the TOTAL .content block width, not the text-only column beside the
+   float: the actual visible text column width is the block width
+   minus the float's width minus its right margin. So with a 127 px
+   floated video plus 0.75 rem right margin, a block width of 20 rem
+   leaves ~11 rem of text alongside the float. */
+:root { --pre-figure-float-text-width: 20rem; }
 .result-block:has(.pre-figure-media.float-left) .content {
   max-width: var(--pre-figure-float-text-width);
 }
