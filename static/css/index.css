@@ -346,6 +346,14 @@ html { scroll-behavior: smooth; }
 }
 .result-block::after { content: ""; display: table; clear: both; }
 
+/* When a result block has a left-floated pre-figure media, narrow the
+   explanation paragraph so it wraps onto enough lines to cover the
+   floated video's vertical extent. Tunable via the CSS variable. */
+:root { --pre-figure-float-text-width: 11rem; }
+.result-block:has(.pre-figure-media.float-left) .content p {
+  max-width: var(--pre-figure-float-text-width);
+}
+
 /* ----- Responsive YouTube embeds ----- */
 .video-embed {
   position: relative;
