@@ -238,7 +238,15 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* ----- Firsts-grid media cells (image or video, replacing a first-card) ----- */
+/* ----- Firsts-grid media cells (image or video, replacing a first-card) -----
+   Row heights in this grid are driven by the longest text card in each row.
+   Rows with longer titles end up taller than rows with short titles. To keep
+   the media cells from stretching to those taller rows, we cap them at a
+   fixed height and center each media cell vertically within its column.
+   Tune --firsts-media-height to taste. */
+:root {
+  --firsts-media-height: 220px;
+}
 .first-card-video,
 .first-card-image {
   padding: 0 !important;
@@ -247,6 +255,8 @@ html { scroll-behavior: smooth; }
   align-items: center;
   justify-content: center;
   background: #000;
+  height: var(--firsts-media-height) !important;
+  max-height: var(--firsts-media-height);
 }
 .firsts-video,
 .firsts-image {
@@ -254,6 +264,13 @@ html { scroll-behavior: smooth; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* Pull the media column inward so the capped-height box doesn't leave a
+   gap at the top; instead the empty space splits above and below.
+   `:has()` is supported in Chrome 105+, Safari 15.4+, Firefox 121+. */
+.columns > .column:has(.first-card-image),
+.columns > .column:has(.first-card-video) {
+  align-self: center;
 }
 
 /* ----- Firsts intro image (centered photo/illustration above the firsts grid) ----- */
