@@ -254,6 +254,18 @@ html { scroll-behavior: smooth; }
   object-fit: cover;
 }
 
+/* ----- Firsts intro image (centered photo/illustration above the firsts grid) ----- */
+.firsts-intro-image {
+  max-width: 340px;
+  margin: 0.5rem auto 1.5rem !important;
+}
+.firsts-intro-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
 /* ----- Walkthrough video (full-width embed at bottom of "Firsts in this work") ----- */
 .walkthrough-block { margin-top: 2.5rem; }
 .walkthrough-title { margin-bottom: 1rem !important; color: #2b3340; }

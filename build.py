@@ -257,7 +257,7 @@ PAPERS = [
         "tagline": "An energy model for penetration depth; vertical hydrophilic arrays penetrate more than hydrophobic ones, opposite to horizontal fibers.",
         "authors": [
             {"name": "Gene Patrick S. Rible", "citation_name": "Rible, Gene Patrick S.", "affil_ix": 1, "is_corresponding": True},
-            {"name": "Visaisaya Chakpuang", "citation_name": "Chakpuang, Visaisaya", "affil_ix": 1, "is_corresponding": False},
+            {"name": "Visalsaya Chakpuang", "citation_name": "Chakpuang, Visalsaya", "affil_ix": 1, "is_corresponding": False},
             {"name": "Aidan D. Holihan", "citation_name": "Holihan, Aidan D.", "affil_ix": 1, "is_corresponding": False},
             {"name": "Hannah P. Sebek", "citation_name": "Sebek, Hannah P.", "affil_ix": 1, "is_corresponding": False},
             {"name": "Hannah H. Osman", "citation_name": "Osman, Hannah H.", "affil_ix": 1, "is_corresponding": False},
@@ -277,6 +277,12 @@ PAPERS = [
              "src": "static/videos/vertical-fibers/droponverticalfiberarray.mp4",
              "type": "video/mp4"},
         ],
+        # Centered intro image rendered between the "Firsts in this work"
+        # subtitle and the firsts grid.
+        "firsts_intro_image": {
+            "src": "static/images/vertical-fibers/VerticalFur.jpeg",
+            "alt": "Photograph of vertically oriented fur (the natural biological inspiration for the experimental fiber arrays in this paper).",
+        },
         "abstract": (
             "This experimental work investigates the impact dynamics of drops on vertically "
             "oriented, three-dimensional (3D)-printed fiber arrays with variations in packing "
@@ -1257,6 +1263,7 @@ SUBPAGE_TEMPLATE = """<!DOCTYPE html>
     <p class="subtitle is-6 has-text-centered firsts-sub">
       New experimental tools and observations from this paper.
     </p>
+    {firsts_intro_image_html}
     <div class="columns is-multiline">
       {firsts_cards}
     </div>
@@ -1531,6 +1538,14 @@ def render_subpage(paper):
         teaser_section=teaser_videos_section(paper),
         abstract=science_text(paper["abstract"]),
         firsts_cards=firsts_cards(paper),
+        firsts_intro_image_html=(
+            textwrap.dedent(f"""\
+                <figure class="image firsts-intro-image">
+                  <img src="../{paper['firsts_intro_image']['src']}"
+                       alt="{attr(paper['firsts_intro_image'].get('alt', ''))}">
+                </figure>""")
+            if paper.get("firsts_intro_image") else ""
+        ),
         walkthrough_block=(
             textwrap.dedent(f"""\
                 <div class="walkthrough-block">
