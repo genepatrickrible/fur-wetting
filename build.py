@@ -339,6 +339,10 @@ PAPERS = [
         "result_sections": [
             {"id": "section-vertical", "title": "Why vertical arrays behave differently",
              "explanation": "The drop now impacts fiber tips rather than fiber sides, so its kinetic energy converts to penetration through a different geometric channel. We tabulate the new impact regimes via a modified aspect ratio.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "QUVgO2ej2Xs",
+                  "label": "Movie 1: Eight impact classifications"},
+             ],
              "figs": 2,
              "images": [
                  {"path": "static/images/vertical-fibers/fig1.png",
@@ -348,6 +352,13 @@ PAPERS = [
              ]},
             {"id": "section-model", "title": "An energy-conservation model for penetration depth",
              "explanation": "We balance kinetic energy at impact against the work done by drag and capillary forces on the descending liquid front. In the sparse regime (Oh < 4 × 10⁻²) the prediction is linear in We; experiments confirm.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "70T4kgBaItM",
+                  "label": "Movie 2: Contact angles, apparent vs. actual"},
+                 {"kind": "youtube", "youtube_id": "wonSRuHMXi4",
+                  "label": "Movie 3: Maximum drop spread at fiber tips"},
+             ],
+             "pre_media_layout": "row",
              "figs": 1,
              "image": "static/images/vertical-fibers/fig7.png",
              "alt": "Figure 7 from the paper: graphical accompaniment to the penetration-depth model. Cylindrical drop projection becoming a rectangular steady-state footprint inside the array, with the supporting area-projection image sequence at the bottom."},
@@ -358,6 +369,13 @@ PAPERS = [
              "alt": "Figure 8 from the paper: normalized maximum penetration depth versus Weber number, hydrophilic (left) and hydrophobic (right) panels with linear k1*We + k2 fits across multiple densities. Hydrophilic curves sit above hydrophobic at low We; the wettability inversion versus horizontal fibers."},
             {"id": "section-wicking", "title": "A Bond-number criterion for capillary wicking",
              "explanation": "Whenever the Bond number of the residual drop falls below 0.11, the trapped liquid wicks vertically along the fibers, extending the effective penetration depth beyond what impact alone would predict.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "-skOA36BdPw",
+                  "label": "Movie 4: Constant deceleration of liquid front"},
+                 {"kind": "youtube", "youtube_id": "DXUviuUxWIg",
+                  "label": "Movie 5: Drop deceleration above the array"},
+             ],
+             "pre_media_layout": "row",
              "figs": 1,
              "image": "static/images/vertical-fibers/fig6.png",
              "alt": "Figure 6 from the paper: image sequences of drops impacting vertical arrays at We = 9.4 (max spread plus lateral spread at base), We = 0.75 (low-We rebound plus capillary action, the LRC regime), and We = 8.7 (deceleration above the fiber array)."},
@@ -379,11 +397,11 @@ PAPERS = [
              "caption": "Image sequences of all eight observed impact classifications on vertically oriented fiber arrays, paired with normalized temporal heat maps. Pairs with Fig. 3."},
             {"label": "Movie 2: Contact angles, apparent vs. actual", "youtube_id": "70T4kgBaItM",
              "caption": "The advancing contact angles appear hydrophilic due to shadowing; closer inspection shows they exceed 90°. Pairs with Fig. 4."},
-            {"label": "Movie 3: Maximum drop spread at fiber tips, We = 9.4", "youtube_id": "wonSRuHMXi4",
+            {"label": "Movie 3: Maximum drop spread at fiber tips", "youtube_id": "wonSRuHMXi4",
              "caption": "Max drop spread at the fiber tips, fiber-prevented spreading, enhanced penetration, and lateral spread at the base. Pairs with Fig. 6(a)."},
             {"label": "Movie 4: Constant deceleration of liquid front", "youtube_id": "-skOA36BdPw",
              "caption": "The penetrating liquid front decelerates at a constant rate due to drop interaction with the fiber shafts; rebound follows above the array. Pairs with Figs. 6(b) and 5(d)."},
-            {"label": "Movie 5: Drop deceleration above the array, We = 8.7", "youtube_id": "DXUviuUxWIg",
+            {"label": "Movie 5: Drop deceleration above the array", "youtube_id": "DXUviuUxWIg",
              "caption": "A We = 8.7 drop decelerates above the fiber array due to impact force without penetrating. Pairs with Fig. 6(c)."},
         ],
         "videos_note": "",
@@ -925,9 +943,14 @@ def firsts_cards(paper, base_path=""):
     return "\n".join(cells)
 
 
-def render_pre_media(items):
+def render_pre_media(items, layout="stacked"):
     """Render a section's pre-figure media block (YouTube embeds or local
-    videos), stacked vertically full-width. Returns "" if items is empty."""
+    videos). Returns "" if items is empty.
+
+    layout="stacked" (default): each item full-width, one above the next.
+    layout="row": wrap each item in a Bulma is-half column and arrange
+    side-by-side in a single .columns row.
+    """
     if not items:
         return ""
     blocks = []
@@ -952,6 +975,15 @@ def render_pre_media(items):
                     <source src="../{m['src']}"{type_attr}>
                   </video>
                 </div>"""))
+    if layout == "row" and len(blocks) > 1:
+        cols = "\n".join(
+            f'<div class="column is-half">\n{b}\n</div>' for b in blocks
+        )
+        return (
+            '<div class="columns is-multiline pre-figure-row">\n'
+            f'{cols}\n'
+            '</div>'
+        )
     return "\n".join(blocks)
 
 
@@ -1015,7 +1047,10 @@ def result_blocks(paper):
                 </div>""")
         # explanation is treated as trusted inline HTML so we can use
         # <sub>, <sup>, <i>, <b>, etc. The metadata is author-authored.
-        pre_html = render_pre_media(r.get("pre_media", []))
+        pre_html = render_pre_media(
+            r.get("pre_media", []),
+            layout=r.get("pre_media_layout", "stacked"),
+        )
         pre_block = (pre_html + "\n") if pre_html else ""
         blocks.append(textwrap.dedent(f"""\
             <div class="result-block" id="{r['id']}">
