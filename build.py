@@ -232,7 +232,7 @@ PAPERS = [
         # APS DFD 2022 conference slides, archived on Zenodo (citable DOI).
         # Drives the hero-row "Slides" button. The Zenodo record is
         # independently citable from the journal paper.
-        "slides_url": "https://doi.org/10.5281/zenodo.20493438",
+        "slides_url": "https://doi.org/10.5281/zenodo.20597232",
         "videos": [
             {"label": "Movie S1: Impact classifications", "youtube_id": "DExOMbiahUk",
              "caption": "Image sequences of all eight observed impact classifications, paired with the normalized temporal heat maps from Figure 3."},
