@@ -428,6 +428,8 @@ PAPERS = [
         ],
         "videos_note": "",
         "youtube_playlist_url": "https://www.youtube.com/playlist?list=PLaxoeadWOB0oCZIeNvpSKCT-catNuo7R8",
+        # APS DFD 2023 conference slides, archived on Zenodo (citable DOI).
+        "slides_url": "https://doi.org/10.5281/zenodo.20649226",
         "keywords": "drop impact, vertical fibers, mammalian fur, Weber number, Ohnesorge number, capillary infiltration, Bond number, energy conservation",
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank undergraduate research assistants at the Fluids and Structures Laboratory, Syed Jaffar Raza for bespoke code contributions, Alexander Bottoms for editing some of the supplementary videos, and Michael Spinazzola III for fine-tuning the laser-cutting setup and parameters for our vertical fiber arrays. We also give special thanks to Mohammad Alipanahrostami for coating our samples.",
         "bibkey": "rible2025vertical",
