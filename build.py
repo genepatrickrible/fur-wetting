@@ -294,7 +294,7 @@ PAPERS = [
              "alt": "Photograph of vertically oriented fur, the natural biological inspiration for the experimental fiber arrays in this paper."},
             {"kind": "card", "icon": "fas fa-arrows-up-down",
              "title": "First drop-impact study of vertical fiber arrays",
-             "summary": "A systematic investigation of how vertical orientation reshapes impact dynamics compared to the horizontal case.",
+             "summary": "A systematic investigation of how vertical orientation reshapes impact dynamics compared with the horizontal case.",
              "section": "section-vertical"},
             {"kind": "card", "icon": "fas fa-calculator",
              "title": "Energy-conservation penetration model",
@@ -339,7 +339,7 @@ PAPERS = [
             "impact velocity."
         ),
         "firsts": [
-            {"icon": "fas fa-arrows-up-down", "title": "First drop-impact study of vertical fiber arrays", "summary": "A systematic investigation of how vertical orientation reshapes impact dynamics compared to the horizontal case.", "section": "section-vertical"},
+            {"icon": "fas fa-arrows-up-down", "title": "First drop-impact study of vertical fiber arrays", "summary": "A systematic investigation of how vertical orientation reshapes impact dynamics compared with the horizontal case.", "section": "section-vertical"},
             {"icon": "fas fa-calculator", "title": "Energy-conservation penetration model", "summary": "An analytical relationship between Weber number and penetration depth, validated against the experiments.", "section": "section-model"},
             {"icon": "fas fa-droplet", "title": "Wettability inversion versus horizontal", "summary": "Vertical hydrophilic arrays penetrate MORE than hydrophobic counterparts, opposite to the horizontal case, because gravity-aligned capillarity dominates.", "section": "section-wettability-vert"},
             {"icon": "fas fa-arrow-down", "title": "Capillary wicking below a Bond-number threshold", "summary": "When Bo ⩽ 0.11 the penetrated liquid wicks vertically along the fibers, extending the wetted footprint beyond the kinematic depth.", "section": "section-wicking"},
