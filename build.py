@@ -478,13 +478,28 @@ PAPERS = [
             {"icon": "fas fa-droplet", "title": "First two-drop study on horizontal fibers", "summary": "How an array already wetted by one drop responds to the next.", "section": "section-two-drops"},
             {"icon": "fas fa-arrows-left-right", "title": "Eccentricity matters at low We, not at high We", "summary": "Where the second drop lands relative to the first is increasingly irrelevant as impact velocity grows.", "section": "section-eccentricity"},
             {"icon": "fas fa-bomb", "title": "First-drop fragmentation as a protective mechanism", "summary": "When the first drop fragments (more likely on hydrophobic, sparse, fast impacts), the second drop's lateral and depth growth is suppressed.", "section": "section-fragmentation"},
-            {"icon": "fas fa-toggle-on", "title": "Wettability–Weber crossover", "summary": "Hydrophobic fibers best limit second-drop depth at low We; hydrophilic fibers take over as We rises.", "section": "section-crossover"},
+            {"icon": "fas fa-toggle-on", "title": "Wettability-Weber crossover", "summary": "Hydrophobic fibers best limit second-drop depth at low We; hydrophilic fibers take over at higher We.", "section": "section-crossover"},
         ],
         "result_sections": [
-            {"id": "section-two-drops", "title": "Two-drop experiments on hydrophilic and hydrophobic arrays", "explanation": "We deliver two drops in quick succession onto 3D-printed horizontal fiber arrays with varying density and wettability, tracking how the second impact alters the wetted depth and width established by the first.", "figs": 2},
-            {"id": "section-eccentricity", "title": "Impact eccentricity loses its grip at high Weber number", "explanation": "At low We, offset between drops changes the outcome; at high We, the impact dynamics swamp the local detail of where the second drop lands.", "figs": 1},
-            {"id": "section-fragmentation", "title": "Fragmentation of the first drop protects against the second", "explanation": "Hydrophobicity, large inter-fiber spacing, and high impact velocity all promote fragmentation of the first drop, which redirects mass away from the array and limits the second drop's contribution to penetration.", "figs": 1},
-            {"id": "section-crossover", "title": "Hydrophobic helps at low We; hydrophilic at high We", "explanation": "Below a Weber-number threshold, hydrophobic fibers minimize the second drop's depth increase. Above it, hydrophilic fibers do so via lateral spreading.", "figs": 1},
+            {"id": "section-two-drops", "title": "Two-drop experiments on hydrophilic and hydrophobic arrays",
+             "explanation": "We deliver two drops in quick succession onto 3D-printed horizontal fiber arrays with varying density and wettability, tracking how the second impact alters the wetted depth and width established by the first.",
+             "figs": 2,
+             "placeholder_hints": [
+                 "Figure 1 from the paper: 3D-printed fiber arrays in staggered and aligned configurations across standard, front-and-back, and bottom orientations, plus contact-angle photos of hydrophilic and hydrophobic samples (43° and 66° advancing).",
+                 "Figure 4 from the paper: classifications of supersurface retention (None / Partial / Total) and fragmentation (Whole / 0 / 1 / 2 / 3 / 4+) of liquid within the array. The taxonomy used in the rest of the analysis.",
+             ]},
+            {"id": "section-eccentricity", "title": "Impact eccentricity loses its grip at high Weber number",
+             "explanation": "At low We, offset between drops changes the outcome; at high We, the impact dynamics swamp the local detail of where the second drop lands.",
+             "figs": 1,
+             "placeholder_hint": "Figure 10 from the paper: change in penetration depth Δd_p within the aligned array imposed by the second drop. (a, b) Δd_p versus the dimensionless horizontal displacement δ between drops. (c, d) Δd_p versus impact Weber number. Colors indicate the degree of fragmentation."},
+            {"id": "section-fragmentation", "title": "Fragmentation of the first drop protects against the second",
+             "explanation": "Hydrophobicity, large inter-fiber spacing, and high impact velocity all promote fragmentation of the first drop, which redirects mass away from the array and limits the second drop's contribution to penetration.",
+             "figs": 1,
+             "placeholder_hint": "Figure 7 from the paper: five-row image sequences showing how the second drop's displacement δ and the impact Weber number control liquid spread Δχ and penetration-depth change Δd_p, including the δ ≈ 0 vs δ > 0 contrasts at We ≈ 20 and at We ≈ 60-80, plus a fragmentation case (4+) and a high-eccentricity case."},
+            {"id": "section-crossover", "title": "Hydrophobic helps at low We; hydrophilic at high We",
+             "explanation": "Below a Weber-number threshold, hydrophobic fibers minimize the second drop's depth increase. Above it, hydrophilic fibers do so via lateral spreading.",
+             "figs": 1,
+             "placeholder_hint": "Figure 8 from the paper: (a) hydrophilic fibers allow a reduction in spread (Δχ < 0) at high We. (b) Hydrophobic fibers allow a reduction in penetration depth (Δd_p < 0) at low We. The two-panel wettability crossover for sequential impacts."},
         ],
         "journal": "Physics of Fluids",
         "journal_abbrev": "Phys. Fluids",
@@ -499,7 +514,14 @@ PAPERS = [
         "pub_year": "2025",
         "supp_pdf_source": "anthology/supplementary/Supplemental Information.pdf",
         "videos": [],
-        "videos_note": "Supplementary movies for this paper are pending upload to YouTube. Drop YouTube IDs into PAPERS[2]['videos'] in build.py and re-run.",
+        "videos_note": (
+            "Supplementary movies pending upload to YouTube (≈4 expected, based on the paper's "
+            "'multimedia available online' tags):\n"
+            "• Movie 1: Drop displacement vs Weber number, image sequences (pairs with Fig. 7)\n"
+            "• Movie 2: Hydrophilic, reduction in spread Δχ < 0 at high We (pairs with Fig. 8a)\n"
+            "• Movie 3: Hydrophobic, reduction in penetration depth Δd_p < 0 at low We (pairs with Fig. 8b)\n"
+            "• Movie 4: Rebound classifications: Jet-Bulb, Jet, Little, None (pairs with Fig. 11)"
+        ),
         "keywords": "sequential drop impact, fiber arrays, mammalian fur, fragmentation, Weber number, eccentricity, hydrophobic",
         "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and from Georgia Institute of Technology.",
         "bibkey": "rible2025sequential",
