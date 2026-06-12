@@ -8,6 +8,11 @@ body {
 html { scroll-behavior: smooth; }
 .result-block, #citation { scroll-margin-top: 1.5rem; }
 
+/* Force italic to render even when the heading font lacks a bold-italic
+   variant (Google Sans / Noto Sans in the Bulma stack would otherwise
+   silently fall back to regular bold). Applies to <i> inside any heading. */
+h1 i, h2 i, h3 i, h4 i, h5 i, h6 i, .title i { font-style: italic !important; }
+
 /* ----- Hero / title ----- */
 .publication-title {
   line-height: 1.25;

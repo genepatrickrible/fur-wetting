@@ -521,12 +521,10 @@ PAPERS = [
         "supp_pdf_source": "anthology/supplementary/Supplemental Information.pdf",
         "videos": [],
         "videos_note": (
-            "Supplementary movies pending upload to YouTube (≈4 expected, based on the paper's "
-            "'multimedia available online' tags):\n"
+            "3 supplementary movies pending upload to YouTube:\n"
             "• Movie 1: Drop displacement vs Weber number, image sequences (pairs with Fig. 7)\n"
-            "• Movie 2: Hydrophilic, reduction in spread Δχ < 0 at high We (pairs with Fig. 8a)\n"
-            "• Movie 3: Hydrophobic, reduction in penetration depth Δd_p < 0 at low We (pairs with Fig. 8b)\n"
-            "• Movie 4: Rebound classifications: Jet-Bulb, Jet, Little, None (pairs with Fig. 11)"
+            "• Movie 2: Hydrophilic Δχ < 0 at high We and hydrophobic Δd_p < 0 at low We (pairs with Fig. 8)\n"
+            "• Movie 3: Rebound classifications: Jet-Bulb, Jet, Little, None (pairs with Fig. 11)"
         ),
         "keywords": "sequential drop impact, fiber arrays, mammalian fur, fragmentation, Weber number, eccentricity, hydrophobic",
         "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and from Georgia Institute of Technology.",
