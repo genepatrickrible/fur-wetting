@@ -484,6 +484,7 @@ PAPERS = [
             {"id": "section-two-drops", "title": "Two-drop experiments on hydrophilic and hydrophobic arrays",
              "explanation": "We deliver two drops in quick succession onto 3D-printed horizontal fiber arrays with varying density and wettability, tracking how the second impact alters the wetted depth and width established by the first.",
              "figs": 2,
+             "pair_layout": "stacked",
              "images": [
                  {"path": "static/images/sequential-impacts/fig1.png",
                   "alt": "Figure 1 from the paper: 3D-printed fiber arrays in staggered and aligned configurations across standard, front-and-back, and bottom orientations, plus contact-angle photos of hydrophilic and hydrophobic samples."},
@@ -1073,15 +1074,26 @@ def result_blocks(paper):
                   <img src="../{r['image']}" alt="{attr(r.get('alt', ''))}">
                 </figure>""")
         elif r.get("images"):  # paired panel: list of {path, alt}
-            cols = []
-            for img in r["images"]:
-                cols.append(textwrap.dedent(f"""\
-                    <div class="column">
-                      <figure class="image">
-                        <img src="../{img['path']}" alt="{attr(img.get('alt', ''))}">
-                      </figure>
-                    </div>"""))
-            fig_html = '<div class="columns is-vcentered figure-pair">\n' + "\n".join(cols) + "\n</div>"
+            if r.get("pair_layout") == "stacked":
+                # Render each image on its own row, full-width.
+                stacked = []
+                for img in r["images"]:
+                    stacked.append(textwrap.dedent(f"""\
+                        <figure class="image">
+                          <img src="../{img['path']}" alt="{attr(img.get('alt', ''))}">
+                        </figure>"""))
+                fig_html = "\n".join(stacked)
+            else:
+                # Default: side-by-side columns.
+                cols = []
+                for img in r["images"]:
+                    cols.append(textwrap.dedent(f"""\
+                        <div class="column">
+                          <figure class="image">
+                            <img src="../{img['path']}" alt="{attr(img.get('alt', ''))}">
+                          </figure>
+                        </div>"""))
+                fig_html = '<div class="columns is-vcentered figure-pair">\n' + "\n".join(cols) + "\n</div>"
         elif r.get("figs", 1) == 0:
             # No figure at all (e.g. a section whose visual content is
             # entirely pre_media videos above the explanation).
