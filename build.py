@@ -994,7 +994,7 @@ def firsts_cards(paper, base_path=""):
               <a class="first-card-link" href="{href}">
                 <div class="first-card">
                   <span class="icon has-text-info"><i class="{f['icon']} fa-lg"></i></span>
-                  <h3 class="is-size-5 has-text-weight-bold">{html.escape(f['title'])}</h3>
+                  <h3 class="is-size-5 has-text-weight-bold">{science_text(f['title'])}</h3>
                   <p>{science_text(f['summary'])}</p>
                 </div>
               </a>
@@ -1146,7 +1146,7 @@ def result_blocks(paper):
         pre_block = (pre_html + "\n") if pre_html else ""
         blocks.append(textwrap.dedent(f"""\
             <div class="result-block" id="{r['id']}">
-              <h3 class="title is-4">{html.escape(r['title'])}</h3>
+              <h3 class="title is-4">{science_text(r['title'])}</h3>
               {pre_block}{fig_html}
               <p class="content">{science_text(r['explanation'])}</p>
             </div>"""))
