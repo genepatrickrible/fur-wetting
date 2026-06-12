@@ -519,13 +519,16 @@ PAPERS = [
         "pub_date_iso": "2025-07-25",
         "pub_year": "2025",
         "supp_pdf_source": "anthology/supplementary/Supplemental Information.pdf",
-        "videos": [],
-        "videos_note": (
-            "3 supplementary movies pending upload to YouTube:\n"
-            "• Movie 1: Drop displacement vs Weber number, image sequences (pairs with Fig. 7)\n"
-            "• Movie 2: Hydrophilic Δχ < 0 at high We and hydrophobic Δd_p < 0 at low We (pairs with Fig. 8)\n"
-            "• Movie 3: Rebound classifications: Jet-Bulb, Jet, Little, None (pairs with Fig. 11)"
-        ),
+        "videos": [
+            {"label": "Movie 1: Drop displacement vs Weber number, image sequences", "youtube_id": "jsPxVjN2mn0",
+             "caption": "Image sequences showing how the displacement of the second drop relative to the first (δ) and the impact Weber number control the change in liquid spread and penetration depth. Pairs with Fig. 7."},
+            {"label": "Movie 2: Wettability crossover at low and high Weber number", "youtube_id": "f46Ycotmya0",
+             "caption": "Two cases that flip with We: (a) hydrophilic fibers allow a reduction in spread of the second drop at high We; (b) hydrophobic fibers allow a reduction in penetration depth at low We. Pairs with Fig. 8."},
+            {"label": "Movie 3: Rebound classifications, Jet-Bulb / Jet / Little / None", "youtube_id": "6268oIcFyZk",
+             "caption": "Classifications of the rebound shape after sequential drop impacts on horizontal fiber arrays: Jet-Bulb, Jet, Little, and None. Each frame is timestamped by dimensionless time. Pairs with Fig. 11."},
+        ],
+        "videos_note": "",
+        "youtube_playlist_url": "https://www.youtube.com/playlist?list=PLaxoeadWOB0qPAMjG2kt4fil6ploAZoFd",
         "keywords": "sequential drop impact, fiber arrays, mammalian fur, fragmentation, Weber number, eccentricity, hydrophobic",
         "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and from Georgia Institute of Technology.",
         "bibkey": "rible2025sequential",
