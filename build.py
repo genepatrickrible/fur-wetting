@@ -454,6 +454,8 @@ PAPERS = [
         "contact_email": "grible@vols.utk.edu",
         # Override: link the Paper button to the lab-hosted open-access PDF.
         "paper_pdf_url": "https://www.dickersonlab.com/_files/ugd/fb8f64_c902c8efda20464bbe6765f314d51e78.pdf",
+        # APS DFD 2024 conference slides, archived on Zenodo (citable DOI).
+        "slides_url": "https://doi.org/10.5281/zenodo.20707527",
         "abstract": (
             "We experimentally investigate liquid infiltration into horizontally oriented "
             "fiber arrays imposed by sequential drop impacts. Our experimental system is "
