@@ -456,6 +456,12 @@ PAPERS = [
         "paper_pdf_url": "https://www.dickersonlab.com/_files/ugd/fb8f64_c902c8efda20464bbe6765f314d51e78.pdf",
         # APS DFD 2024 conference slides, archived on Zenodo (citable DOI).
         "slides_url": "https://doi.org/10.5281/zenodo.20707527",
+        # Looping teaser video rendered between the hero and the abstract.
+        "teaser_videos": [
+            {"label": "Sequential drop impact on a horizontal fiber array",
+             "src": "static/videos/sequential-impacts/h5_teaser.mp4",
+             "type": "video/mp4"},
+        ],
         "abstract": (
             "We experimentally investigate liquid infiltration into horizontally oriented "
             "fiber arrays imposed by sequential drop impacts. Our experimental system is "
@@ -487,6 +493,10 @@ PAPERS = [
         "result_sections": [
             {"id": "section-two-drops", "title": "Two-drop experiments on hydrophilic and hydrophobic arrays",
              "explanation": "We deliver two drops in quick succession onto 3D-printed horizontal fiber arrays with varying density and wettability, tracking how the second impact alters the wetted depth and width established by the first.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "6268oIcFyZk",
+                  "label": "Movie 3: Rebound classifications, Jet-Bulb / Jet / Little / None"},
+             ],
              "figs": 2,
              "pair_layout": "stacked",
              "images": [
@@ -497,6 +507,10 @@ PAPERS = [
              ]},
             {"id": "section-eccentricity", "title": "Impact eccentricity loses its grip at high Weber number",
              "explanation": "At low We, offset between drops changes the outcome; at high We, the impact dynamics swamp the local detail of where the second drop lands.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "jsPxVjN2mn0",
+                  "label": "Movie 1: Drop displacement vs Weber number, image sequences"},
+             ],
              "figs": 1,
              "image": "static/images/sequential-impacts/fig10.png",
              "alt": "Figure 10 from the paper: change in penetration depth within the aligned array imposed by the second drop. Top row: depth change versus the dimensionless horizontal displacement between drops. Bottom row: depth change versus impact Weber number. Colors indicate the degree of fragmentation."},
@@ -507,6 +521,10 @@ PAPERS = [
              "alt": "Figure 7 from the paper: five-row image sequences showing how the second drop's displacement and the impact Weber number control liquid spread and penetration-depth change, including delta about 0 vs delta greater than 0 contrasts at low and high Weber numbers, plus a fragmentation case and a high-eccentricity case."},
             {"id": "section-crossover", "title": "Hydrophobic helps at low We; hydrophilic at high We",
              "explanation": "Below a Weber-number threshold, hydrophobic fibers minimize the second drop's depth increase. Above it, hydrophilic fibers do so via lateral spreading.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "f46Ycotmya0",
+                  "label": "Movie 2: Wettability crossover at low and high Weber number"},
+             ],
              "figs": 1,
              "image": "static/images/sequential-impacts/fig8.png",
              "alt": "Figure 8 from the paper: (a) hydrophilic fibers allow a reduction in spread at high Weber number. (b) Hydrophobic fibers allow a reduction in penetration depth at low Weber number. The two-panel wettability crossover for sequential impacts."},
