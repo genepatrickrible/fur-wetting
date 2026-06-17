@@ -638,13 +638,16 @@ PAPERS = [
         "pub_date_iso": "2025-09-04",
         "pub_year": "2025",
         "supp_pdf_source": None,
-        "videos": [],
-        "videos_note": (
-            "3 supplementary movies pending upload to YouTube:\n"
-            "• Movie 1: Drop on solid, horizontal, and vertical arrays at raindrop speed (pairs with Fig. 3)\n"
-            "• Movie 2: Temporal events in drop spread and penetration (pairs with Fig. 4)\n"
-            "• Movie 3: Three penetration regimes (inertial, inertial-capillary, capillary) (pairs with Fig. 6)"
-        ),
+        "videos": [
+            {"label": "Movie 1: Drop on solid, horizontal, and vertical arrays at raindrop speed", "youtube_id": "KUrlOX65lo8",
+             "caption": "A 3 mm drop impacting at raindrop speed (≈5.3 m/s) on a solid surface, a horizontal fiber array, and a vertical fiber array. The drop splashes on the solid and horizontal cases but the vertical array suppresses the splash. Pairs with Fig. 3."},
+            {"label": "Movie 2: Temporal events in drop spread and penetration", "youtube_id": "e7pq-vO_DSk",
+             "caption": "Image sequence showing the characteristic temporal events in the spreading and penetration of liquid within a vertical fiber array: maximal spread, rebound, secondary spread, and the approach to steady state. Pairs with Fig. 4."},
+            {"label": "Movie 3: Three penetration regimes, inertial / inertial-capillary / capillary", "youtube_id": "gTrDOhBpc-8",
+             "caption": "The three regimes characterizing penetration of a drop into a vertical fiber array: an inertial regime, a transitional inertial-capillary regime, and a final capillary regime of pure downward wicking. Pairs with Fig. 6."},
+        ],
+        "videos_note": "",
+        "youtube_playlist_url": "https://www.youtube.com/playlist?list=PLaxoeadWOB0qWujgOiicmYYh0N-iM1qBl",
         "keywords": "splash suppression, drop impact, vertical fibers, capillary wicking, Weber number scaling, transient penetration",
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank undergraduate research assistants at the Fluids and Structures Laboratory, Hadi Bhidya for bespoke code and video analysis contributions, and Aaron Matheny for performing drop impact experiments at raindrop velocities.",
         "bibkey": "rible2025splash",
