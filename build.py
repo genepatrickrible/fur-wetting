@@ -552,7 +552,7 @@ PAPERS = [
         "videos_note": "",
         "youtube_playlist_url": "https://www.youtube.com/playlist?list=PLaxoeadWOB0qPAMjG2kt4fil6ploAZoFd",
         "keywords": "sequential drop impact, fiber arrays, mammalian fur, fragmentation, Weber number, eccentricity, hydrophobic",
-        "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and from Georgia Institute of Technology.",
+        "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank Isabelle Garrett, an undergraduate research assistant at the Fluids and Structures Laboratory, for editing the image sequences and supplemental videos.",
         "bibkey": "rible2025sequential",
         "tagline_card": "Fragmentation of the first drop, promoted by hydrophobicity and high impact velocity, limits the second drop's lateral spreading and penetration depth.",
     },
