@@ -608,7 +608,7 @@ PAPERS = [
                  {"kind": "youtube", "youtube_id": "gTrDOhBpc-8",
                   "label": "Movie 3: Three penetration regimes, inertial / inertial-capillary / capillary"},
              ],
-             "pre_media_layout": "row",
+             "pre_media_layout": "stacked",
              "figs": 2,
              "pair_layout": "stacked",
              "images": [
