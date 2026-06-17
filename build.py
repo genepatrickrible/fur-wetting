@@ -596,14 +596,29 @@ PAPERS = [
         "firsts": [
             {"icon": "fas fa-stopwatch", "title": "Three penetration regimes on vertical fibers", "summary": "Inertial, transitional, capillary: each with a distinct linear penetration rate.", "section": "section-three-regimes"},
             {"icon": "fas fa-chart-line", "title": "We¹ᐟ⁴ scaling for lateral deformation", "summary": "On horizontal arrays, the time to peak lateral spread scales as We¹ᐟ⁴, matching the canonical drop-on-solid result.", "section": "section-scaling"},
-            {"icon": "fas fa-circle-half-stroke", "title": "Critical Weber for radial deformation", "summary": "Below a critical We the drop does not radially deform; the critical value rises as fiber density falls.", "section": "section-critical"},
+            {"icon": "fas fa-circle-half-stroke", "title": "Critical Weber for radial deformation", "summary": "Below a critical We, the drop does not radially deform; the critical value rises as fiber density falls.", "section": "section-critical"},
             {"icon": "fas fa-shield-halved", "title": "Splash suppression at all tested velocities", "summary": "Vertical arrays restrict lateral spreading enough that drops do not splash, even above 5 m/s.", "section": "section-splash"},
         ],
         "result_sections": [
-            {"id": "section-three-regimes", "title": "Three sequential penetration regimes on vertical fibers", "explanation": "Time-resolved imaging reveals three linearly-approximated penetration rates: an inertial period, a transitional period (inertia plus capillarity), and a final capillary period of pure downward wicking.", "figs": 2},
-            {"id": "section-scaling", "title": "Lateral deformation: We¹ᐟ⁴ scaling", "explanation": "On horizontal arrays, the time to reach maximum lateral deformation scales with We¹ᐟ⁴, mirroring drops on solid surfaces.", "figs": 1},
-            {"id": "section-critical", "title": "A critical Weber number for radial deformation", "explanation": "Below this critical value the drop barely spreads; the threshold rises as fiber density drops.", "figs": 1},
-            {"id": "section-splash", "title": "Vertical arrays suppress splash", "explanation": "Because vertical fibers restrict lateral motion of the impacting liquid, splash is suppressed for all drop velocities we test, including impacts faster than 5 m/s.", "figs": 1},
+            {"id": "section-three-regimes", "title": "Three sequential penetration regimes on vertical fibers",
+             "explanation": "Time-resolved imaging reveals three linearly-approximated penetration rates: an inertial period, a transitional period (inertia plus capillarity), and a final capillary period of pure downward wicking.",
+             "figs": 2,
+             "placeholder_hints": [
+                 "Figure 4 from the paper: image sequence showing the characteristic temporal events in the spreading and penetration of liquid within the array (τ_χ, τ_(i)...τ_(vii), τ_(χ,s)) for a single trial.",
+                 "Figure 6 from the paper: three regimes characterizing the penetration behavior of a drop impacting a vertical fiber array: (a) inertial, (b) inertial-capillary, (c) capillary. The main three-regimes result figure.",
+             ]},
+            {"id": "section-scaling", "title": "Lateral deformation: We¹ᐟ⁴ scaling",
+             "explanation": "On horizontal arrays, the time to reach maximum lateral deformation scales with We¹ᐟ⁴, mirroring drops on solid surfaces.",
+             "figs": 1,
+             "placeholder_hint": "Figure 10 from the paper: first instance of local maximum spread τ_χ vs Weber number for hydrophilic horizontal fibers, with k₁·We¹ᐟ⁴ + k₂ fits across multiple densities. The canonical We¹ᐟ⁴ scaling figure."},
+            {"id": "section-critical", "title": "A critical Weber number for radial deformation",
+             "explanation": "Below this critical value the drop barely spreads; the threshold rises as fiber density drops.",
+             "figs": 1,
+             "placeholder_hint": "Figure 12 from the paper: first instance of local maximum spread τ_χ vs Weber number for hydrophilic vertical fibers, with k₁, k₂, and the critical Weber number We_c printed on each panel. Densities where no We_c exists are labeled accordingly."},
+            {"id": "section-splash", "title": "Vertical arrays suppress splash",
+             "explanation": "Because vertical fibers restrict lateral motion of the impacting liquid, splash is suppressed for all drop velocities we test, including impacts faster than 5 m/s.",
+             "figs": 1,
+             "placeholder_hint": "Figure 3 from the paper: 4-row image sequence of a 3 mm drop impacting at raindrop speed (~5.32 m/s) on (a) a solid surface, (b) a horizontal fiber array, (c) a vertical fiber array, and (d) a side-by-side comparison of horizontal vs vertical. Shows splash on solid and horizontal, suppression on vertical."},
         ],
         "journal": "Physics of Fluids",
         "journal_abbrev": "Phys. Fluids",
@@ -618,7 +633,12 @@ PAPERS = [
         "pub_year": "2025",
         "supp_pdf_source": None,
         "videos": [],
-        "videos_note": "Supplementary movies for this paper are pending upload to YouTube. Drop YouTube IDs into PAPERS[3]['videos'] in build.py and re-run.",
+        "videos_note": (
+            "3 supplementary movies pending upload to YouTube:\n"
+            "• Movie 1: Drop on solid, horizontal, and vertical arrays at raindrop speed (pairs with Fig. 3)\n"
+            "• Movie 2: Temporal events in drop spread and penetration (pairs with Fig. 4)\n"
+            "• Movie 3: Three penetration regimes (inertial, inertial-capillary, capillary) (pairs with Fig. 6)"
+        ),
         "keywords": "splash suppression, drop impact, vertical fibers, capillary wicking, Weber number scaling, transient penetration",
         "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and the contributions of undergraduate researchers in the Dickerson Lab.",
         "bibkey": "rible2025splash",
