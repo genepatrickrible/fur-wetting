@@ -602,6 +602,13 @@ PAPERS = [
         "result_sections": [
             {"id": "section-three-regimes", "title": "Three sequential penetration regimes on vertical fibers",
              "explanation": "Time-resolved imaging reveals three linearly-approximated penetration rates: an inertial period, a transitional period (inertia plus capillarity), and a final capillary period of pure downward wicking.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "e7pq-vO_DSk",
+                  "label": "Movie 2: Temporal events in drop spread and penetration"},
+                 {"kind": "youtube", "youtube_id": "gTrDOhBpc-8",
+                  "label": "Movie 3: Three penetration regimes, inertial / inertial-capillary / capillary"},
+             ],
+             "pre_media_layout": "row",
              "figs": 2,
              "pair_layout": "stacked",
              "images": [
@@ -622,6 +629,10 @@ PAPERS = [
              "alt": "Figure 12 from the paper: first instance of local maximum spread vs Weber number for hydrophilic vertical fibers, with the critical Weber number printed on each panel."},
             {"id": "section-splash", "title": "Vertical arrays suppress splash",
              "explanation": "Because vertical fibers restrict lateral motion of the impacting liquid, splash is suppressed for all drop velocities we test, including impacts faster than 5 m/s.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "KUrlOX65lo8",
+                  "label": "Movie 1: Drop on solid, horizontal, and vertical arrays at raindrop speed"},
+             ],
              "figs": 1,
              "image": "static/images/splash-suppression/fig3.png",
              "alt": "Figure 3 from the paper: image sequence of a 3 mm drop impacting at raindrop speed on a solid surface, a horizontal fiber array, a vertical fiber array, and a side-by-side comparison. Shows splash on solid and horizontal, suppression on vertical."},
@@ -650,6 +661,12 @@ PAPERS = [
         "youtube_playlist_url": "https://www.youtube.com/playlist?list=PLaxoeadWOB0qWujgOiicmYYh0N-iM1qBl",
         "keywords": "splash suppression, drop impact, vertical fibers, capillary wicking, Weber number scaling, transient penetration",
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank undergraduate research assistants at the Fluids and Structures Laboratory, Hadi Bhidya for bespoke code and video analysis contributions, and Aaron Matheny for performing drop impact experiments at raindrop velocities.",
+        # Looping teaser video rendered between the hero and the abstract.
+        "teaser_videos": [
+            {"label": "Drop penetrating a vertical fiber array",
+             "src": "static/videos/splash-suppression/regimes.mp4",
+             "type": "video/mp4"},
+        ],
         "bibkey": "rible2025splash",
         "tagline_card": "Three sequential penetration regimes (inertial, transitional, capillary) on vertical fibers; vertical arrays suppress splashing for all tested drop velocities, even beyond 5 m/s.",
     },
