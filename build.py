@@ -646,7 +646,7 @@ PAPERS = [
             "• Movie 3: Three penetration regimes (inertial, inertial-capillary, capillary) (pairs with Fig. 6)"
         ),
         "keywords": "splash suppression, drop impact, vertical fibers, capillary wicking, Weber number scaling, transient penetration",
-        "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 1825801). We thank undergraduate research assistants at the Fluids and Structures Laboratory, Hadi Bhidya for bespoke code and video analysis contributions, and Aaron Matheny for performing drop impact experiments at raindrop velocities.",
+        "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank undergraduate research assistants at the Fluids and Structures Laboratory, Hadi Bhidya for bespoke code and video analysis contributions, and Aaron Matheny for performing drop impact experiments at raindrop velocities.",
         "bibkey": "rible2025splash",
         "tagline_card": "Three sequential penetration regimes (inertial, transitional, capillary) on vertical fibers; vertical arrays suppress splashing for all tested drop velocities, even beyond 5 m/s.",
     },
