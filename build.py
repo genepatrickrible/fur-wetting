@@ -719,10 +719,25 @@ PAPERS = [
             {"icon": "fas fa-vector-square", "title": "Generalized to any convex cross-section", "summary": "The model extends to any convex fiber geometry, not just circular and wedged.", "section": "section-convex"},
         ],
         "result_sections": [
-            {"id": "section-cross-section", "title": "Why fiber shape matters separately from packing density", "explanation": "Holding wettability and density constant, we compare circular and wedge-cross-section 3D-printed fibers under identical impacts.", "figs": 2},
-            {"id": "section-26-pct", "title": "Geometry overrides wettability for penetration", "explanation": "Circular fibers reduce lateral spreading and promote fragmentation inside the array, deepening the wetted column by 26% on average. Despite being more hydrophilic than the wedge case, circular fibers let drops in more readily.", "figs": 1},
-            {"id": "section-model", "title": "Energy model from a single top-down camera", "explanation": "By balancing kinetic energy at impact against the work done by drag and capillary forces in the array, the depth can be inferred from a single external view, sidestepping the need for internal imaging.", "figs": 1},
-            {"id": "section-convex", "title": "Generalization to any convex fiber shape", "explanation": "We recast the model in terms of geometric moments that work for any convex cross-section, opening the door to direct comparison with natural fibers (mammalian fur, pine needles, plant trichomes).", "figs": 1},
+            {"id": "section-cross-section", "title": "Why fiber shape matters separately from packing density",
+             "explanation": "Holding wettability and density constant, we compare circular and wedge-cross-section 3D-printed fibers under identical impacts.",
+             "figs": 2,
+             "placeholder_hints": [
+                 "Figure 1 from the paper: wedged and circular fiber arrays. (a) cross-section of aligned vs staggered configurations, (b) cross-section of wedged (250 μm) vs circular (100 μm) fibers with the standard/front-back/bottom impact orientations, (c) top view of wedged fibers, (d) oblique view of wedged and circular fibers.",
+                 "Figure 5 from the paper: drop impacts classified by (a) steady-state shape, (b) retraction, and (c) fragmentation, shown as image sequences for drops impacting hydrophilic circular fiber arrays.",
+             ]},
+            {"id": "section-26-pct", "title": "Geometry overrides wettability for penetration",
+             "explanation": "Circular fibers reduce lateral spreading and promote fragmentation inside the array, deepening the wetted column by 26% on average. Despite being more hydrophilic than the wedge case, circular fibers let drops in more readily.",
+             "figs": 1,
+             "placeholder_hint": "Figure 12 from the paper: bar plots of average maximum spread (a) and steady-state penetration depth (b) for hydrophilic and hydrophobic standard wedged (St), front/back (F/Ba), bottom (Bo) wedged, and circular (C) fibers. The cross-section comparison showing circular fibers spread least and penetrate most."},
+            {"id": "section-model", "title": "Energy model from a single top-down camera",
+             "explanation": "By balancing kinetic energy at impact against the work done by drag and capillary forces in the array, the depth can be inferred from a single external view, sidestepping the need for internal imaging.",
+             "figs": 1,
+             "placeholder_hint": "Figure 18 from the paper: liquid infiltration in a fiber array shown from (a) front view, (b) top view, (c, d) side view, and (e) the approximate wedged-fiber geometry. The geometric basis of the energy-conservation penetration-depth model."},
+            {"id": "section-convex", "title": "Generalization to any convex fiber shape",
+             "explanation": "We recast the model in terms of geometric moments that work for any convex cross-section, opening the door to direct comparison with natural fibers (mammalian fur, pine needles, plant trichomes).",
+             "figs": 1,
+             "placeholder_hint": "Figure 19 from the paper: ratio of anteroposterior to lateral spread (ξ_s/χ_s) vs Weber number across all fiber cross-sections and orientations, with panel (h) plotting the model correlation coefficient r_c vs fiber aspect ratio AR for hydrophilic, hydrophobic, and circular fibers. Validates the generalized model across convex geometries."},
         ],
         "journal": "Physics of Fluids",
         "journal_abbrev": "Phys. Fluids",
@@ -737,7 +752,12 @@ PAPERS = [
         "pub_year": "2025",
         "supp_pdf_source": None,
         "videos": [],
-        "videos_note": "Supplementary movies for this paper are pending upload to YouTube. Drop YouTube IDs into PAPERS[4]['videos'] in build.py and re-run.",
+        "videos_note": (
+            "3 supplementary movies pending upload to YouTube:\n"
+            "• Movie 1: Drop impact classifications (steady-state shape, retraction, fragmentation) (pairs with Fig. 5)\n"
+            "• Movie 2: Hydrophilic vs hydrophobic circular fiber penetration (pairs with Fig. 10)\n"
+            "• Movie 3: We > 1000 full penetration in circular fibers (pairs with Fig. 17)"
+        ),
         "keywords": "fiber cross-section, drop penetration, circular fibers, wedge fibers, energy conservation, convex geometry, mammalian fur, pine needles",
         "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and the contributions of undergraduate researchers in the Dickerson Lab.",
         "bibkey": "rible2025crosssection",
