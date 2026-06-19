@@ -572,6 +572,8 @@ PAPERS = [
             "Department of Mechanical, Aerospace and Biomedical Engineering, University of Tennessee, Knoxville, Tennessee 37996, USA",
         ],
         "contact_email": "grible@vols.utk.edu",
+        # Override: link the Paper button to the lab-hosted open-access PDF.
+        "paper_pdf_url": "https://www.dickersonlab.com/_files/ugd/fb8f64_9df03cd4d3434d5fbd7f0d83bfba29f0.pdf",
         # APS DFD 2024 conference slides, archived on Zenodo (citable DOI).
         "slides_url": "https://doi.org/10.5281/zenodo.20765779",
         "abstract": (
