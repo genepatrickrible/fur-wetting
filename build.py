@@ -572,6 +572,8 @@ PAPERS = [
             "Department of Mechanical, Aerospace and Biomedical Engineering, University of Tennessee, Knoxville, Tennessee 37996, USA",
         ],
         "contact_email": "grible@vols.utk.edu",
+        # APS DFD 2024 conference slides, archived on Zenodo (citable DOI).
+        "slides_url": "https://doi.org/10.5281/zenodo.20765779",
         "abstract": (
             "This experimental work builds on our previous studies on the post-impact "
             "characteristics of drops striking three-dimensional-printed fiber arrays by "
