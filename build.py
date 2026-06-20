@@ -765,7 +765,7 @@ PAPERS = [
             "• Movie 3: We > 1000 full penetration in circular fibers (pairs with Fig. 17)"
         ),
         "keywords": "fiber cross-section, drop penetration, circular fibers, wedge fibers, energy conservation, convex geometry, mammalian fur, pine needles",
-        "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and the contributions of undergraduate researchers in the Dickerson Lab.",
+        "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2153740). We thank Mohammad Alipanahrostami and Dr. Wei Wang for coating our hydrophobic fibers in their laboratory.",
         "bibkey": "rible2025crosssection",
         "tagline_card": "Circular fiber cross-sections increase drop penetration by 26% over wedged ones, despite being more hydrophilic. Geometry trumps wettability.",
     },
