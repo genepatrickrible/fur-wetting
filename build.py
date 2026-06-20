@@ -694,6 +694,18 @@ PAPERS = [
             "Department of Mechanical, Aerospace and Biomedical Engineering, University of Tennessee, Knoxville, Tennessee 37996, USA",
         ],
         "contact_email": "grible@vols.utk.edu",
+        # Looping teaser video rendered between the hero and the abstract.
+        "teaser_videos": [
+            {"label": "Drop impact on a circular-fiber array",
+             "src": "static/videos/cross-section-circularity/h2_teaser.mp4",
+             "type": "video/mp4"},
+        ],
+        # Centered intro image rendered between the "Firsts in this work"
+        # subtitle and the firsts grid.
+        "firsts_intro_image": {
+            "src": "static/images/cross-section-circularity/ThreadedFur_greenBG_1.jpeg",
+            "alt": "Threaded circular-fiber array mimicking fur, against a green background. The nylon-threaded circular fiber arrays used in this study.",
+        },
         "abstract": (
             "In this experimental work, we compare the drop impact behavior on horizontal "
             "fiber arrays with circular and wedged fiber cross sections. Non-circular fibers "
