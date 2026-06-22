@@ -694,6 +694,8 @@ PAPERS = [
             "Department of Mechanical, Aerospace and Biomedical Engineering, University of Tennessee, Knoxville, Tennessee 37996, USA",
         ],
         "contact_email": "grible@vols.utk.edu",
+        # Override: link the Paper button to the lab-hosted open-access PDF.
+        "paper_pdf_url": "https://www.dickersonlab.com/_files/ugd/fb8f64_166234da311c489191813efbf31a166a.pdf",
         # Looping teaser video rendered between the hero and the abstract.
         "teaser_videos": [
             {"label": "Drop impact on a circular-fiber array",
