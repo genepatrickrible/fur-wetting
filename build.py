@@ -815,6 +815,11 @@ PAPERS = [
             "Department of Mechanical, Aerospace and Biomedical Engineering, University of Tennessee, Knoxville, Tennessee 37996, USA",
         ],
         "contact_email": "grible@vols.utk.edu",
+        # Override: link the Paper button to the lab-hosted open-access PDF.
+        "paper_pdf_url": "https://www.dickersonlab.com/_files/ugd/fb8f64_e2d81489481e419ea2f86865cb1419e4.pdf",
+        # This paper has no supplementary movies (its supplement is a PDF
+        # document of tables and figures), so suppress the videos section.
+        "hide_videos_section": True,
         "abstract": (
             "This experimental work explores the relationship between the properties and "
             "structure of mammalian fur from different habitats and the depth of water drop "
@@ -843,10 +848,25 @@ PAPERS = [
             {"icon": "fas fa-ruler-combined", "title": "Distal diameter sets the decay rate", "summary": "How fast successive impacts stop deepening the wetted column depends on the distal fiber diameter, with guard hair density and roughness setting the dry-zone thickness.", "section": "section-decay"},
         ],
         "result_sections": [
-            {"id": "section-catalog", "title": "Cataloging fur across habitats", "explanation": "We sample fur from six mammals spanning terrestrial, semi-aquatic, and fully aquatic habitats. For each pelt, we quantify guard-hair and underfur length, density, contact angle, equivalent diameter, plus microscopic scale aspect ratio and roughness.", "figs": 2},
-            {"id": "section-saturation", "title": "Why penetration depth saturates", "explanation": "Repeated drop impacts deepen the wetted column up to a point, after which the dry air layer near the skin remains stable. We model the exponential decay of the per-impact depth gain.", "figs": 1},
-            {"id": "section-dual-layer", "title": "Two layers, two wettabilities, one barrier", "explanation": "Digital microscopy reveals that guard hair is hydrophilic (resisting dynamic penetration by spreading impact energy laterally) while underfur is hydrophobic (resisting static penetration by capillarity). Together they form the dry barrier.", "figs": 1},
-            {"id": "section-decay", "title": "Distal diameter controls how fast saturation arrives", "explanation": "Among the macro variables, distal guard-hair diameter sets the decay rate of per-impact gain. Pelage density and roughness set the saturation thickness.", "figs": 1},
+            {"id": "section-catalog", "title": "Cataloging fur across habitats",
+             "explanation": "We sample fur from six mammals spanning terrestrial, semi-aquatic, and fully aquatic habitats. For each pelt, we quantify guard-hair and underfur length, density, contact angle, equivalent diameter, plus microscopic scale aspect ratio and roughness.",
+             "figs": 2,
+             "placeholder_hints": [
+                 "Figure 3 from the paper: digital-microscopy measurement methods. (a) Contact angle on a guard hair, (b) equivalent diameter from a cross-section, (c) guard-hair density by counting fibers in a known area, (d) root-mean-square roughness along three lengths of a beaver guard hair.",
+                 "Figure 5 from the paper: scanning electron microscope images of sea otter guard hair scale structures: (a) distal, (b) medial, (c) proximal sections, showing the coronal-to-imbricate-acuminate transition. The microscopic scale catalog.",
+             ]},
+            {"id": "section-saturation", "title": "Why penetration depth saturates",
+             "explanation": "Repeated drop impacts deepen the wetted column up to a point, after which the dry air layer near the skin remains stable. We model the exponential decay of the per-impact depth gain.",
+             "figs": 1,
+             "placeholder_hint": "Figure 6 from the paper: (a) dry-zone thickness vs number of drops, showing exponential decay to a steady state, plus the model fits (b-e) relating saturation depth, dry-zone thickness, and decay rate to the dimensionless fur-property groups. The quantitative saturation result."},
+            {"id": "section-dual-layer", "title": "Two layers, two wettabilities, one barrier",
+             "explanation": "Digital microscopy reveals that guard hair is hydrophilic (resisting dynamic penetration by spreading impact energy laterally) while underfur is hydrophobic (resisting static penetration by capillarity). Together they form the dry barrier.",
+             "figs": 1,
+             "placeholder_hint": "Figure 4 from the paper: (a) photo of a gray wolf pelt showing straight guard fur protruding past the denser underfur, (b) schematic of guard fur dissipating drop energy and channeling liquid into the hydrophobic underfur, (c) the dry-zone model before impacts (n=0) vs after many impacts (n much greater than 1). The dual-layer architecture."},
+            {"id": "section-decay", "title": "Distal diameter controls how fast saturation arrives",
+             "explanation": "Among the macro variables, distal guard-hair diameter sets the decay rate of per-impact gain. Pelage density and roughness set the saturation thickness.",
+             "figs": 1,
+             "placeholder_hint": "Figure 1 from the paper: experimental setup. Successive drops are dispensed through a needle onto a fur sample; two parallel needles inserted from below detect the dry zone, measured by a digital caliper, while a tube shields the drops from airflow. The apparatus that measures penetration depth across successive drops."},
         ],
         "journal": "Bioinspiration & Biomimetics",
         "journal_abbrev": "Bioinspir. Biomim.",
@@ -1282,6 +1302,30 @@ def result_blocks(paper):
     return "\n".join(blocks)
 
 
+def videos_section(paper):
+    """Render the full 'Supplementary videos' section, or "" if the paper
+    sets hide_videos_section (e.g. a paper whose only supplement is a PDF)."""
+    if paper.get("hide_videos_section"):
+        return ""
+    playlist_link = ""
+    if paper.get("youtube_playlist_url"):
+        playlist_link = (
+            f'<p class="subtitle is-6 has-text-centered firsts-sub">'
+            f'<a href="{paper["youtube_playlist_url"]}" target="_blank" rel="noopener">'
+            f'Watch all of them as a playlist on YouTube &rarr;</a></p>'
+        )
+    return textwrap.dedent(f"""\
+        <section class="section has-background-light">
+          <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">Supplementary videos</h2>
+            {playlist_link}
+            <div class="columns is-multiline">
+              {video_tiles(paper)}
+            </div>
+          </div>
+        </section>""")
+
+
 def video_tiles(paper):
     if not paper["videos"]:
         # Allow videos_note to be a multi-line string with bullet points.
@@ -1612,15 +1656,7 @@ SUBPAGE_TEMPLATE = """<!DOCTYPE html>
   </div>
 </section>
 
-<section class="section has-background-light">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Supplementary videos</h2>
-    {video_playlist_link}
-    <div class="columns is-multiline">
-      {video_tiles}
-    </div>
-  </div>
-</section>
+{videos_section}
 
 <section class="section" id="citation">
   <div class="container is-max-desktop">
@@ -1895,13 +1931,7 @@ def render_subpage(paper):
             if paper.get("walkthrough_youtube_id") else ""
         ),
         result_blocks=result_blocks(paper),
-        video_tiles=video_tiles(paper),
-        video_playlist_link=(
-            f'<p class="subtitle is-6 has-text-centered firsts-sub">'
-            f'<a href="{paper["youtube_playlist_url"]}" target="_blank" rel="noopener">'
-            f'Watch all of them as a playlist on YouTube &rarr;</a></p>'
-            if paper.get("youtube_playlist_url") else ""
-        ),
+        videos_section=videos_section(paper),
         bibtex_block=html.escape(bibtex(paper)),
         acknowledgments=html.escape(paper["acknowledgments"]),
         giscus_html=SITE.get("giscus_html", ""),
