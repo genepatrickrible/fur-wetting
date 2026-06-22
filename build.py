@@ -735,6 +735,10 @@ PAPERS = [
         "result_sections": [
             {"id": "section-cross-section", "title": "Why fiber shape matters separately from packing density",
              "explanation": "Holding wettability and density constant, we compare circular and wedge-cross-section 3D-printed fibers under identical impacts.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "Rw_RDOa2pqw",
+                  "label": "Movie 1: Drop impact classifications, shape / retraction / fragmentation"},
+             ],
              "figs": 2,
              "pair_layout": "stacked",
              "images": [
@@ -745,6 +749,13 @@ PAPERS = [
              ]},
             {"id": "section-26-pct", "title": "Geometry overrides wettability for penetration",
              "explanation": "Circular fibers reduce lateral spreading and promote fragmentation inside the array, deepening the wetted column by 26% on average. Despite being more hydrophilic than the wedge case, circular fibers let drops in more readily.",
+             "pre_media": [
+                 {"kind": "youtube", "youtube_id": "bGp9309YkV4",
+                  "label": "Movie 3: Full penetration of circular fiber arrays at We > 1000"},
+                 {"kind": "youtube", "youtube_id": "lLegtuwa96Q",
+                  "label": "Movie 2: Hydrophilic vs hydrophobic circular fiber penetration"},
+             ],
+             "pre_media_layout": "stacked",
              "figs": 1,
              "image": "static/images/cross-section-circularity/fig12.png",
              "alt": "Figure 12 from the paper: bar plots of average maximum spread and steady-state penetration depth for hydrophilic and hydrophobic standard wedged, front/back wedged, bottom wedged, and circular fibers. Shows circular fibers spread least and penetrate most."},
@@ -776,7 +787,7 @@ PAPERS = [
              "caption": "Image sequences of drops impacting hydrophilic circular fiber arrays, classified by steady-state shape, retraction, and fragmentation. Pairs with Fig. 5."},
             {"label": "Movie 2: Hydrophilic vs hydrophobic circular fiber penetration", "youtube_id": "lLegtuwa96Q",
              "caption": "Image sequences comparing drop infiltration into hydrophilic and hydrophobic circular fiber arrays at matched density and impact velocity; penetration is deeper in the hydrophobic case. Pairs with Fig. 10."},
-            {"label": "Movie 3: Full penetration of circular fiber arrays at We > 1000", "youtube_id": "EOQG307EKoU",
+            {"label": "Movie 3: Full penetration of circular fiber arrays at We > 1000", "youtube_id": "bGp9309YkV4",
              "caption": "A drop impacting at a Weber number above 1000 fully penetrates a hydrophobic circular fiber array. Pairs with Fig. 17."},
         ],
         "videos_note": "",
