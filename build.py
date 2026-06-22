@@ -696,6 +696,8 @@ PAPERS = [
         "contact_email": "grible@vols.utk.edu",
         # Override: link the Paper button to the lab-hosted open-access PDF.
         "paper_pdf_url": "https://www.dickersonlab.com/_files/ugd/fb8f64_166234da311c489191813efbf31a166a.pdf",
+        # APS DFD conference slides, archived on Zenodo (citable DOI).
+        "slides_url": "https://doi.org/10.5281/zenodo.20800486",
         # Looping teaser video rendered between the hero and the abstract.
         "teaser_videos": [
             {"label": "Drop impact on a circular-fiber array",
