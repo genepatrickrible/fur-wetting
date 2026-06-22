@@ -769,13 +769,16 @@ PAPERS = [
         "pub_date_iso": "2025-12-04",
         "pub_year": "2025",
         "supp_pdf_source": None,
-        "videos": [],
-        "videos_note": (
-            "3 supplementary movies pending upload to YouTube:\n"
-            "• Movie 1: Drop impact classifications (steady-state shape, retraction, fragmentation) (pairs with Fig. 5)\n"
-            "• Movie 2: Hydrophilic vs hydrophobic circular fiber penetration (pairs with Fig. 10)\n"
-            "• Movie 3: We > 1000 full penetration in circular fibers (pairs with Fig. 17)"
-        ),
+        "videos": [
+            {"label": "Movie 1: Drop impact classifications, shape / retraction / fragmentation", "youtube_id": "Rw_RDOa2pqw",
+             "caption": "Image sequences of drops impacting hydrophilic circular fiber arrays, classified by steady-state shape, retraction, and fragmentation. Pairs with Fig. 5."},
+            {"label": "Movie 2: Hydrophilic vs hydrophobic circular fiber penetration", "youtube_id": "lLegtuwa96Q",
+             "caption": "Image sequences comparing drop infiltration into hydrophilic and hydrophobic circular fiber arrays at matched density and impact velocity; penetration is deeper in the hydrophobic case. Pairs with Fig. 10."},
+            {"label": "Movie 3: Full penetration of circular fiber arrays at We > 1000", "youtube_id": "EOQG307EKoU",
+             "caption": "A drop impacting at a Weber number above 1000 fully penetrates a hydrophobic circular fiber array. Pairs with Fig. 17."},
+        ],
+        "videos_note": "",
+        "youtube_playlist_url": "https://www.youtube.com/playlist?list=PLaxoeadWOB0oTIzQwIoQOGKammav7NOqy",
         "keywords": "fiber cross-section, drop penetration, circular fibers, wedge fibers, energy conservation, convex geometry, mammalian fur, pine needles",
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2153740). We thank Mohammad Alipanahrostami and Dr. Wei Wang for coating our hydrophobic fibers in their laboratory.",
         "bibkey": "rible2025crosssection",
