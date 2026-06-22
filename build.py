@@ -897,7 +897,7 @@ PAPERS = [
         "videos": [],
         "videos_note": "Supplementary movies for this paper are pending upload to YouTube. Drop YouTube IDs into PAPERS[5]['videos'] in build.py and re-run.",
         "keywords": "mammalian fur, raindrop penetration, pelage, guard hair, underfur, hydrophobic, hydrophilic, scale roughness, dry zone, thermoregulation, bioinspiration",
-        "acknowledgments": "We acknowledge support from the University of Tennessee, Knoxville and the contributions of undergraduate researchers in the Dickerson Lab.",
+        "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank Dr. Sarah C. Linn-Peirano from the Department of Biomedical and Diagnostic Sciences, College of Veterinary Medicine at the University of Tennessee for helping us collect fresh domestic cat fur samples.",
         "bibkey": "rible2026fur",
         "tagline_card": "Six mammalian pelts: a dual-layer hydrophilic/hydrophobic guard-hair-vs-underfur structure produces a saturating dry zone under repeated rainfall.",
     },
