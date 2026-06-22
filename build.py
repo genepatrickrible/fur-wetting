@@ -893,7 +893,7 @@ PAPERS = [
         "pub_year": "2026",
         "supp_pdf_source": "anthology/supplementary/bbae66c1supp1.pdf",
         # Zenodo dataset DOI: paste the actual DOI here (without "https://doi.org/" prefix)
-        "dataset_doi": "",
+        "dataset_doi": "10.5281/zenodo.19632180",
         "videos": [],
         "videos_note": "Supplementary movies for this paper are pending upload to YouTube. Drop YouTube IDs into PAPERS[5]['videos'] in build.py and re-run.",
         "keywords": "mammalian fur, raindrop penetration, pelage, guard hair, underfur, hydrophobic, hydrophilic, scale roughness, dry zone, thermoregulation, bioinspiration",
