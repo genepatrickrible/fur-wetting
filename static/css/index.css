@@ -223,6 +223,83 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i, .title i { font-style: italic !important; }
   border-color: #c5d2e0;
 }
 
+/* ----- Hub story (thematic-arc media cards on the root page) ----- */
+.story-act { margin-bottom: 3.5rem; }
+.story-act:last-child { margin-bottom: 0; }
+.story-act-heading { margin-bottom: 0.6rem !important; color: #2b3340; }
+.story-act-intro {
+  max-width: 46rem;
+  margin: 0 auto 1.75rem !important;
+  text-align: center;
+  color: #5a6573;
+  line-height: 1.55;
+}
+
+/* The card: white panel with a media area on top and body below.
+   Mirrors .first-card-link hover (lift + shadow + border accent). */
+.story-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+.story-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e6e9ee;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+.story-card-link:hover .story-card {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  border-color: #c5d2e0;
+}
+
+/* Fixed-height media area on a neutral backdrop; contain keeps the
+   varied-aspect clips (portrait drop impacts, landscape regimes) uncropped. */
+.story-media {
+  height: 240px;
+  background: #0b0d10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.story-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.story-body { padding: 1.1rem 1.3rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
+.story-venue { font-size: 0.78rem; color: #8a93a0; margin-bottom: 0.35rem !important; }
+.story-headline {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #1f2430;
+  margin-bottom: 0.5rem;
+}
+.story-finding { color: #4a4a4a; line-height: 1.5; margin-bottom: 0.9rem; }
+.story-readmore {
+  margin-top: auto;
+  font-weight: 600;
+  color: #2b6cb0;
+  transition: letter-spacing 0.12s ease;
+}
+.story-card-link:hover .story-readmore { letter-spacing: 0.02em; }
+
+@media (max-width: 768px) {
+  .story-media { height: 200px; }
+  /* lone Act III card: drop the desktop offset so it fills width when stacked */
+  .story-act .column.is-offset-one-quarter { margin-left: 0; }
+}
+
 /* ----- Result blocks ----- */
 .result-block { margin-bottom: 3rem; }
 .result-block .title.is-4 { margin-bottom: 1rem; }

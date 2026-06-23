@@ -250,6 +250,8 @@ PAPERS = [
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2153740). We thank undergraduate research assistants at the Fluids and Structures Laboratory, Visalsaya Chakpuang, David Job Dooley, and Agustin Soto for bespoke code contributions, Rachel Robinette for video analysis, and Syed Jaffar Raza for editing the supplementary videos. We also give special thanks to Mohammad Alipanahrostami for coating our hydrophobic fibers.",
         "bibkey": "rible2024horizontal",
         "tagline_card": "Counter to intuition, hydrophilic horizontal fiber arrays resist dynamic drop penetration better than hydrophobic ones at the tested densities. Hydrophobic fibers only win at low Weber numbers; a critical Weber number We_c marks the crossover.",
+        "hub_headline": "Hydrophilic fur wins in the rain",
+        "hub_media": "static/videos/horizontal-fibers/horizontal-fiber.mp4",
     },
     {
         "slug": "vertical-fibers",
@@ -436,6 +438,8 @@ PAPERS = [
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank undergraduate research assistants at the Fluids and Structures Laboratory, Syed Jaffar Raza for bespoke code contributions, Alexander Bottoms for editing some of the supplementary videos, and Michael Spinazzola III for fine-tuning the laser-cutting setup and parameters for our vertical fiber arrays. We also give special thanks to Mohammad Alipanahrostami for coating our samples.",
         "bibkey": "rible2025vertical",
         "tagline_card": "An energy-conservation model in which penetration scales linearly with We for sparse vertical fibers; hydrophilic vertical arrays penetrate more than hydrophobic ones (opposite to horizontal).",
+        "hub_headline": "Standing fibers flip the rule",
+        "hub_media": "static/videos/vertical-fibers/droponverticalfiberarray_v1.mp4",
     },
     {
         "slug": "sequential-impacts",
@@ -555,6 +559,8 @@ PAPERS = [
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank Isabelle Garrett, an undergraduate research assistant at the Fluids and Structures Laboratory, for editing the image sequences and supplemental videos.",
         "bibkey": "rible2025sequential",
         "tagline_card": "Fragmentation of the first drop, promoted by hydrophobicity and high impact velocity, limits the second drop's lateral spreading and penetration depth.",
+        "hub_headline": "The first drop shields the second",
+        "hub_media": "static/videos/sequential-impacts/h5_teaser.mp4",
     },
     {
         "slug": "splash-suppression",
@@ -673,6 +679,8 @@ PAPERS = [
         ],
         "bibkey": "rible2025splash",
         "tagline_card": "Three sequential penetration regimes (inertial, transitional, capillary) on vertical fibers; vertical arrays suppress splashing for all tested drop velocities, even beyond 5 m/s.",
+        "hub_headline": "Vertical arrays kill the splash",
+        "hub_media": "static/videos/splash-suppression/regimes.mp4",
     },
     {
         "slug": "cross-section-circularity",
@@ -798,6 +806,8 @@ PAPERS = [
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2153740). We thank Mohammad Alipanahrostami and Dr. Wei Wang for coating our hydrophobic fibers in their laboratory.",
         "bibkey": "rible2025crosssection",
         "tagline_card": "Circular fiber cross-sections increase drop penetration by 26% over wedged ones, despite being more hydrophilic. Geometry trumps wettability.",
+        "hub_headline": "Round fibers let water in",
+        "hub_media": "static/videos/cross-section-circularity/h2_teaser.mp4",
     },
     {
         "slug": "fur-pelts",
@@ -900,6 +910,8 @@ PAPERS = [
         "acknowledgments": "This research was partially funded by the National Science Foundation (CMMI 1825801 and CBET 2205558). We thank Dr. Sarah C. Linn-Peirano from the Department of Biomedical and Diagnostic Sciences, College of Veterinary Medicine at the University of Tennessee for helping us collect fresh domestic cat fur samples.",
         "bibkey": "rible2026fur",
         "tagline_card": "Six mammalian pelts: a dual-layer hydrophilic/hydrophobic guard-hair-vs-underfur structure produces a saturating dry zone under repeated rainfall.",
+        "hub_headline": "Real fur carves a dry zone",
+        "hub_media": "static/videos/fur-pelts/caribou_teaser.mp4",
     },
 ]
 
@@ -1789,8 +1801,8 @@ HUB_TEMPLATE = """<!DOCTYPE html>
           </div>
           <div class="publication-links">
             <span class="link-block">
-              <a href="#papers" class="button is-dark is-rounded">
-                <span class="icon"><i class="fas fa-list"></i></span><span>The papers</span>
+              <a href="#story" class="button is-dark is-rounded">
+                <span class="icon"><i class="fas fa-book-open"></i></span><span>The story</span>
               </a>
             </span>
             <span class="link-block">
@@ -1819,11 +1831,21 @@ HUB_TEMPLATE = """<!DOCTYPE html>
   </div>
 </section>
 
-<section class="section has-background-light" id="papers">
+<section class="section has-background-light" id="story">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Papers</h2>
+    <h2 class="title is-3 has-text-centered">The story, in six papers</h2>
     <p class="subtitle is-6 has-text-centered firsts-sub">
-      Each card links to a per-paper page with the abstract, key findings, figures, and citation.
+      One result from each study, in the order the science unfolded. Each card plays a clip from its paper; click to read the full page.
+    </p>
+    {hub_story}
+  </div>
+</section>
+
+<section class="section" id="papers">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">All six papers, in one place</h2>
+    <p class="subtitle is-6 has-text-centered firsts-sub">
+      A quick index. Each card links to a per-paper page with the abstract, key findings, figures, and citation.
     </p>
     <div class="columns is-multiline">
       {hub_paper_cards}
@@ -1968,6 +1990,93 @@ def hub_paper_cards():
     return "\n".join(cards)
 
 
+# ----------------------------------------------------------------------------
+# HUB STORY (thematic arc across the six papers, shown on the root page)
+# ----------------------------------------------------------------------------
+# Each act groups paper slugs under a heading + a short connective narrative.
+# The arc runs: simplified single-orientation models -> added real-world
+# complications -> back to real mammalian fur.
+HUB_STORY = [
+    {
+        "heading": "Simplified models, one orientation at a time",
+        "intro": (
+            "Mammals cannot carry umbrellas, yet their fur keeps them warm and "
+            "dry in a downpour. To uncover how, we 3D-print fur-like fiber arrays "
+            "we can tune at will and drop water onto them. The first two studies "
+            "isolate a single variable: the orientation of the fibers."
+        ),
+        "slugs": ["horizontal-fibers", "vertical-fibers"],
+    },
+    {
+        "heading": "Toward realism: repeated drops, splashing, and fiber shape",
+        "intro": (
+            "Real rain is never a single clean drop on a pristine array. These "
+            "three studies add the complications that matter: a second drop "
+            "landing where the first already wet the array, splashing at raindrop "
+            "speed, and the non-circular cross-section of real hairs."
+        ),
+        "slugs": ["sequential-impacts", "splash-suppression", "cross-section-circularity"],
+    },
+    {
+        "heading": "Back to real mammalian fur",
+        "intro": (
+            "Finally, we return to the animals themselves, dropping water onto "
+            "real pelts from six species to confirm the mechanisms our engineered "
+            "arrays revealed."
+        ),
+        "slugs": ["fur-pelts"],
+    },
+]
+
+
+def hub_story():
+    """Render the thematic-arc story section: per-act heading + intro, then a
+    media-rich card per paper (looping teaser video, headline, finding, link).
+    Paths are root-relative (the hub lives at /), so no '../' prefix."""
+    by_slug = {p["slug"]: p for p in PAPERS}
+    acts_html = []
+    for act in HUB_STORY:
+        n = len(act["slugs"])
+        # 2-card act -> is-half; 3-card act -> is-one-third; lone card centered.
+        if n == 1:
+            col_class = "column is-half is-offset-one-quarter"
+        elif n == 3:
+            col_class = "column is-one-third"
+        else:
+            col_class = "column is-half"
+        cards = []
+        for slug in act["slugs"]:
+            p = by_slug[slug]
+            venue = f"<em>{html.escape(p['journal'])}</em> <strong>{p['volume']}</strong>, {p['firstpage']} ({p['pub_year']})"
+            cards.append(textwrap.dedent(f"""\
+                <div class="{col_class}">
+                  <a class="story-card-link" href="{slug}/">
+                    <div class="story-card">
+                      <div class="story-media">
+                        <video class="story-video" muted autoplay loop playsinline preload="metadata">
+                          <source src="{p['hub_media']}" type="video/mp4">
+                        </video>
+                      </div>
+                      <div class="story-body">
+                        <p class="story-venue">{venue}</p>
+                        <h3 class="story-headline">{science_text(p['hub_headline'])}</h3>
+                        <p class="story-finding">{science_text(p['tagline_card'])}</p>
+                        <span class="story-readmore">Read the paper&nbsp;&rarr;</span>
+                      </div>
+                    </div>
+                  </a>
+                </div>"""))
+        acts_html.append(textwrap.dedent(f"""\
+            <div class="story-act">
+              <h3 class="title is-4 has-text-centered story-act-heading">{html.escape(act['heading'])}</h3>
+              <p class="story-act-intro">{html.escape(act['intro'])}</p>
+              <div class="columns is-multiline is-centered">
+                {"".join(cards)}
+              </div>
+            </div>"""))
+    return "\n".join(acts_html)
+
+
 def render_hub():
     latest = max(PAPERS, key=lambda p: p["pub_date_iso"])
     hub_collection = []
@@ -2013,6 +2122,7 @@ def render_hub():
         contact_line_hub=SITE["contact_line_hub"],
         program_description=html.escape(SITE["program_description"]),
         engagement_buttons="\n".join(engagement_buttons()),
+        hub_story=hub_story(),
         hub_paper_cards=hub_paper_cards(),
         combined_bibtex=html.escape(combined),
         acknowledgments=html.escape(SITE["acknowledgments_hub"]),
