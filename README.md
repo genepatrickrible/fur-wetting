@@ -1,7 +1,8 @@
         # Drop Impact on Bio-inspired Fiber Arrays and Mammalian Fur
 
         Source for the project landing page that aggregates six experimental papers
-        on drop impact, fiber arrays, and mammalian fur from the Dickerson Lab at
+        on drop impact, fiber arrays, and mammalian fur from the
+        [Fluids and Structures Lab (FaST Lab)](https://www.dickersonlab.com/) at
         the University of Tennessee, Knoxville.
 
         Live at **https://genepatrickrible.github.io/fur-wetting/**.

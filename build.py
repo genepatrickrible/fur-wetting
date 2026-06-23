@@ -27,8 +27,12 @@ SITE = {
     "favicon_emoji": "\U0001F43A",  # wolf (one of the mammals studied in the fur-pelts paper)
     "body_of_work_title": "Drop Impact on Bio-inspired Fiber Arrays and Mammalian Fur",
     "tagline": "How fiber geometry, packing density, and pelt structure govern raindrop penetration.",
+    # NOTE: rendered as trusted inline HTML on the hub (not escaped), so the
+    # lab name can be a hyperlink. Keep any literal < & > as HTML entities.
     "program_description": (
-        "A six-paper experimental program from the Dickerson Lab at the "
+        "A six-paper experimental program from the "
+        "<a href=\"https://www.dickersonlab.com/\" target=\"_blank\" rel=\"noopener\">"
+        "Fluids and Structures Lab (FaST Lab)</a> at the "
         "University of Tennessee, Knoxville on how mammalian fur, and 3D-printed "
         "fiber arrays inspired by it, govern penetration by impacting drops. "
         "The papers progress from single-orientation arrays (horizontal, then "
@@ -1806,6 +1810,11 @@ HUB_TEMPLATE = """<!DOCTYPE html>
               </a>
             </span>
             <span class="link-block">
+              <a href="#papers" class="button is-dark is-rounded">
+                <span class="icon"><i class="fas fa-list"></i></span><span>All six papers</span>
+              </a>
+            </span>
+            <span class="link-block">
               <a href="#citation" class="button is-dark is-rounded">
                 <span class="icon"><i class="fas fa-quote-right"></i></span><span>Cite all six</span>
               </a>
@@ -2091,8 +2100,9 @@ def render_hub():
         )
     combined = "\n\n".join(bibtex(p) for p in PAPERS)
     description = (
-        "A six-paper experimental program from the Dickerson Lab on how mammalian "
-        "fur and bio-inspired fiber arrays govern raindrop penetration."
+        "A six-paper experimental program from the Fluids and Structures Lab "
+        "(FaST Lab) on how mammalian fur and bio-inspired fiber arrays govern "
+        "raindrop penetration."
     )
     return HUB_TEMPLATE.format(
         body_of_work_title=html.escape(SITE["body_of_work_title"]),
@@ -2120,7 +2130,7 @@ def render_hub():
         lead_authors_html=SITE["lead_authors_html"],
         affiliations_html=SITE["affiliations_html"],
         contact_line_hub=SITE["contact_line_hub"],
-        program_description=html.escape(SITE["program_description"]),
+        program_description=SITE["program_description"],  # trusted inline HTML (see SITE)
         engagement_buttons="\n".join(engagement_buttons()),
         hub_story=hub_story(),
         hub_paper_cards=hub_paper_cards(),
@@ -2165,7 +2175,8 @@ def render_readme():
         # {SITE['body_of_work_title']}
 
         Source for the project landing page that aggregates six experimental papers
-        on drop impact, fiber arrays, and mammalian fur from the Dickerson Lab at
+        on drop impact, fiber arrays, and mammalian fur from the
+        [Fluids and Structures Lab (FaST Lab)](https://www.dickersonlab.com/) at
         the University of Tennessee, Knoxville.
 
         Live at **{SITE['canonical_url']}**.

@@ -6,7 +6,7 @@ body {
 }
 
 html { scroll-behavior: smooth; }
-.result-block, #citation { scroll-margin-top: 1.5rem; }
+.result-block, #citation, #story, #papers, #discussion { scroll-margin-top: 1.5rem; }
 
 /* Force italic to render even when the heading font lacks a bold-italic
    variant (Google Sans / Noto Sans in the Bulma stack would otherwise
