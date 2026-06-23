@@ -55,8 +55,8 @@ SITE = {
     ),
     "lastmod_date": "2026-06-04",
     # Verification tokens populated after registering with GSC / Bing
-    "gsc_token": "",
-    "bing_token": "",
+    "gsc_token": "_FBIuw5tjFAnswzA6hsk9ef-XGoOlv-NTrNg2-ASR5w",
+    "bing_token": "046E29E6C297494487B19BE1CE9E155D",
     # Site-wide engagement buttons (Phase 5b in the research-page-builder
     # skill). Empty string = button is not rendered. Both go in the hero
     # link-row on every subpage and the hub hero.
