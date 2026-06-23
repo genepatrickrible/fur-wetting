@@ -1872,13 +1872,6 @@ HUB_TEMPLATE = """<!DOCTYPE html>
   </div>
 </section>
 
-<section class="section has-background-light">
-  <div class="container is-max-desktop">
-    <h2 class="title is-4 has-text-centered">Acknowledgments</h2>
-    <div class="content has-text-centered"><p>{acknowledgments}</p></div>
-  </div>
-</section>
-
 <section class="section" id="discussion">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Discussion</h2>
@@ -2135,7 +2128,6 @@ def render_hub():
         hub_story=hub_story(),
         hub_paper_cards=hub_paper_cards(),
         combined_bibtex=html.escape(combined),
-        acknowledgments=html.escape(SITE["acknowledgments_hub"]),
         giscus_html=SITE.get("giscus_html", ""),
         repo_url=SITE["repo_url"],
     )

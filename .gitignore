@@ -5,3 +5,9 @@ __pycache__/
 
 # Source manuscripts (publisher copyright); not for public hosting
 anthology/
+
+# Source/original media not served by the site (only the .mp4 derivatives
+# under static/videos/ are referenced and deployed).
+*.avi
+*.mov
+*.AAE
