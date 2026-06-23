@@ -1832,11 +1832,7 @@ HUB_TEMPLATE = """<!DOCTYPE html>
                 <span class="icon"><i class="fas fa-list"></i></span><span>All six papers</span>
               </a>
             </span>
-            <span class="link-block">
-              <a href="#citation" class="button is-dark is-rounded">
-                <span class="icon"><i class="fas fa-quote-right"></i></span><span>Cite all six</span>
-              </a>
-            </span>
+            {cite_all_dropdown}
           </div>
           <div class="publication-links engagement-row">
             {engagement_buttons}
@@ -1993,6 +1989,39 @@ def render_subpage(paper):
     )
 
 
+def hub_cite_dropdown():
+    """Hero 'Cite all six' dropdown for the hub, matching the per-paper Cite
+    dropdown: 'Copy all as text' writes plain + rich-text (italic journal,
+    bold volume) for all six citations; 'BibTeX (.bib)' jumps to #citation.
+    The shared static/js/index.js wires the single .cite-dropdown per page."""
+    plain = "\n\n".join(citation_text_plain(p) for p in PAPERS)
+    html_combined = "<br><br>".join(citation_text_html(p) for p in PAPERS)
+    return textwrap.dedent(f"""\
+        <span class="link-block">
+          <div class="dropdown cite-dropdown">
+            <div class="dropdown-trigger">
+              <button class="button is-dark is-rounded" aria-haspopup="true" aria-controls="cite-menu">
+                <span class="icon"><i class="fas fa-quote-right"></i></span>
+                <span>Cite all six</span>
+                <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="cite-menu" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item" data-cite-text
+                   data-citation-text="{attr(plain)}"
+                   data-citation-html="{attr(html_combined)}">
+                  <span class="icon"><i class="fas fa-copy"></i></span><span class="cite-label">Copy all as text</span>
+                </a>
+                <a href="#citation" class="dropdown-item">
+                  <span class="icon"><i class="fas fa-code"></i></span><span>BibTeX (.bib)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </span>""")
+
+
 def hub_paper_cards():
     cards = []
     for p in PAPERS:
@@ -2143,6 +2172,7 @@ def render_hub():
         contact_line_hub=SITE["contact_line_hub"],
         program_description=SITE["program_description"],  # trusted inline HTML (see SITE)
         engagement_buttons="\n".join(engagement_buttons()),
+        cite_all_dropdown=hub_cite_dropdown(),
         hub_story=hub_story(),
         hub_paper_cards=hub_paper_cards(),
         combined_bibtex=html.escape(combined),
