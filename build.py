@@ -41,7 +41,7 @@ SITE = {
     ),
     "lead_authors_plain": "Gene Patrick S. Rible, Andrew K. Dickerson",
     "lead_authors_html": (
-        "<span class=\"author-block\">Gene Patrick S. Rible</span>, "
+        "<span class=\"author-block\">Gene Patrick S. Rible<sup>*</sup></span>, "
         "<span class=\"author-block\">Andrew K. Dickerson</span>"
     ),
     "affiliations_html": (
@@ -49,7 +49,7 @@ SITE = {
         "Biomedical Engineering, University of Tennessee, Knoxville</span>"
     ),
     "contact_line_hub": (
-        "<em>Contact researchers: "
+        "<em><sup>*</sup>Contact researchers: "
         "<a href=\"mailto:grible@vols.utk.edu\" style=\"text-decoration: underline;\">"
         "grible@vols.utk.edu</a></em>"
     ),
