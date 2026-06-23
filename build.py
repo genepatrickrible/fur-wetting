@@ -975,6 +975,24 @@ def doi_url(doi: str) -> str:
     return f"https://doi.org/{doi}"
 
 
+def favicon_links() -> str:
+    """Real, crawlable favicon <link> tags (absolute URLs).
+
+    Google's favicon crawler ignores data-URI favicons, so the previous
+    inline SVG never showed in search results. These point at actual PNG/ICO
+    files so the wolf icon can appear beside the result. Absolute URLs avoid
+    the hub-vs-subpage relative-path difference.
+    """
+    base = SITE["canonical_url"]  # ends with a slash
+    return (
+        f'<link rel="icon" href="{base}favicon.ico" sizes="any">\n'
+        f'  <link rel="icon" type="image/png" sizes="32x32" href="{base}static/icons/favicon-32.png">\n'
+        f'  <link rel="icon" type="image/png" sizes="48x48" href="{base}static/icons/favicon-48.png">\n'
+        f'  <link rel="icon" type="image/png" sizes="192x192" href="{base}static/icons/favicon-192.png">\n'
+        f'  <link rel="apple-touch-icon" sizes="180x180" href="{base}static/icons/apple-touch-icon.png">'
+    )
+
+
 def short_authors(authors, max_n=3):
     names = [a["name"] for a in authors]
     if len(names) <= max_n + 1:
@@ -1604,7 +1622,7 @@ SUBPAGE_TEMPLATE = """<!DOCTYPE html>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{canonical_root}static/images/teaser-social.png">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>{favicon_emoji}</text></svg>">
+  {favicon_links}
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -1768,7 +1786,7 @@ HUB_TEMPLATE = """<!DOCTYPE html>
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{canonical}static/images/teaser-social.png">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>{favicon_emoji}</text></svg>">
+  {favicon_links}
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -1932,7 +1950,7 @@ def render_subpage(paper):
         doi_url=doi_url(paper["doi"]),
         citation_pdf_url=citation_pdf,
         og_image_alt=attr(f"Teaser for {paper['title']}"),
-        favicon_emoji=SITE["favicon_emoji"],
+        favicon_links=favicon_links(),
         jsonld=jsonld_subpage(paper),
         tagline=science_text(paper["tagline"]),
         authors_html=authors_html(paper["authors"]),
@@ -2117,7 +2135,7 @@ def render_hub():
         latest_firstpage=latest["firstpage"],
         latest_doi=latest["doi"],
         latest_doi_url=doi_url(latest["doi"]),
-        favicon_emoji=SITE["favicon_emoji"],
+        favicon_links=favicon_links(),
         hub_collection_parts=",\n      ".join(hub_collection),
         tagline=science_text(SITE["tagline"]),
         lead_authors_html=SITE["lead_authors_html"],
