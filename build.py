@@ -258,6 +258,12 @@ PAPERS = [
         "tagline_card": "Counter to intuition, hydrophilic horizontal fiber arrays resist dynamic drop penetration better than hydrophobic ones at the tested densities. Hydrophobic fibers only win at low Weber numbers; a critical Weber number We_c marks the crossover.",
         "hub_headline": "Hydrophilic fur wins in the rain",
         "hub_media": "static/videos/horizontal-fibers/horizontal-fiber.mp4",
+        "award": {
+            "badge": "Front Cover",
+            "highlight": "Won the front cover of the journal",
+            "image": "static/images/horizontal-fibers/langmuir-cover.jpg",
+            "caption": "On the cover of Langmuir 40(26), 2024",
+        },
     },
     {
         "slug": "vertical-fibers",
@@ -446,6 +452,10 @@ PAPERS = [
         "tagline_card": "An energy-conservation model in which penetration scales linearly with We for sparse vertical fibers; hydrophilic vertical arrays penetrate more than hydrophobic ones (opposite to horizontal).",
         "hub_headline": "Standing fibers flip the rule",
         "hub_media": "static/videos/vertical-fibers/droponverticalfiberarray_v1.mp4",
+        "award": {
+            "badge": "Featured Article",
+            "highlight": "Selected as the journal's Featured Article",
+        },
     },
     {
         "slug": "sequential-impacts",
@@ -1845,6 +1855,8 @@ HUB_TEMPLATE = """<!DOCTYPE html>
   </div>
 </section>
 
+{hub_cover_feature}
+
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-justified">
@@ -2021,6 +2033,12 @@ def hub_cite_dropdown():
 def hub_paper_cards():
     cards = []
     for p in PAPERS:
+        highlight = ""
+        if p.get("award"):
+            highlight = (
+                f'<p class="award-highlight"><i class="fas fa-award"></i> '
+                f'{html.escape(p["award"]["highlight"])}</p>'
+            )
         cards.append(textwrap.dedent(f"""\
             <div class="column is-half">
               <a class="first-card-link" href="{p['slug']}/">
@@ -2028,6 +2046,7 @@ def hub_paper_cards():
                   <h3 class="is-size-5 has-text-weight-bold">{html.escape(p['title'])}</h3>
                   <p class="is-size-7" style="color:#777;margin-top:0.4rem;">{html.escape(short_authors(p['authors']))}</p>
                   <p class="is-size-7" style="color:#777;margin-bottom:0.6rem;"><em>{html.escape(p['journal'])}</em> <strong>{p['volume']}</strong>, {p['firstpage']} ({p['pub_year']})</p>
+                  {highlight}
                   <p>{science_text(p['tagline_card'])}</p>
                 </div>
               </a>
@@ -2074,6 +2093,26 @@ HUB_STORY = [
 ]
 
 
+def hub_cover_feature():
+    """Render the journal-cover image (the paper whose award has an image),
+    centered, linking to its subpage, shown above the About section. Returns
+    "" if no paper has a cover image."""
+    for p in PAPERS:
+        award = p.get("award") or {}
+        if award.get("image"):
+            cap = html.escape(award.get("caption", ""))
+            return textwrap.dedent(f"""\
+                <section class="section hub-cover-section">
+                  <div class="container is-max-desktop has-text-centered">
+                    <a class="hub-cover-feature" href="{p['slug']}/">
+                      <img src="{award['image']}" alt="{attr(award.get('caption', 'Journal cover'))}">
+                    </a>
+                    <p class="hub-cover-caption">{cap}</p>
+                  </div>
+                </section>""")
+    return ""
+
+
 def hub_story():
     """Render the thematic-arc story section: per-act heading + intro, then a
     media-rich card per paper (looping teaser video, headline, finding, link).
@@ -2093,11 +2132,18 @@ def hub_story():
         for slug in act["slugs"]:
             p = by_slug[slug]
             venue = f"<em>{html.escape(p['journal'])}</em> <strong>{p['volume']}</strong>, {p['firstpage']} ({p['pub_year']})"
+            badge = ""
+            if p.get("award"):
+                badge = (
+                    f'<span class="award-badge"><i class="fas fa-award"></i> '
+                    f'{html.escape(p["award"]["badge"])}</span>'
+                )
             cards.append(textwrap.dedent(f"""\
                 <div class="{col_class}">
                   <a class="story-card-link" href="{slug}/">
                     <div class="story-card">
                       <div class="story-media">
+                        {badge}
                         <video class="story-video" muted autoplay loop playsinline preload="metadata">
                           <source src="{p['hub_media']}" type="video/mp4">
                         </video>
@@ -2167,6 +2213,7 @@ def render_hub():
         affiliations_html=SITE["affiliations_html"],
         contact_line_hub=SITE["contact_line_hub"],
         program_description=SITE["program_description"],  # trusted inline HTML (see SITE)
+        hub_cover_feature=hub_cover_feature(),
         engagement_buttons="\n".join(engagement_buttons()),
         cite_all_dropdown=hub_cite_dropdown(),
         hub_story=hub_story(),

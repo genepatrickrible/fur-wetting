@@ -263,6 +263,7 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i, .title i { font-style: italic !important; }
 /* Fixed-height media area on a neutral backdrop; contain keeps the
    varied-aspect clips (portrait drop impacts, landscape regimes) uncropped. */
 .story-media {
+  position: relative;
   height: 240px;
   background: #0b0d10;
   display: flex;
@@ -298,6 +299,64 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i, .title i { font-style: italic !important; }
   .story-media { height: 200px; }
   /* lone Act III card: drop the desktop offset so it fills width when stacked */
   .story-act .column.is-offset-one-quarter { margin-left: 0; }
+}
+
+/* ----- Journal honors (cover feature, award badge, index highlight) ----- */
+.hub-cover-section { padding-top: 2rem; padding-bottom: 1rem; }
+.hub-cover-feature {
+  display: inline-block;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.hub-cover-feature img {
+  max-height: 340px;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  display: block;
+}
+.hub-cover-feature:hover { transform: translateY(-2px); }
+.hub-cover-feature:hover img { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24); }
+.hub-cover-caption {
+  margin-top: 0.7rem;
+  color: #6b7280;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Gold "Front Cover" / "Featured Article" pill, overlaid on story media. */
+.award-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  background: #c8901f;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.28em 0.7em;
+  border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+.story-media .award-badge {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 2;
+}
+
+/* Highlighted honor line inside a Publications index card. */
+.award-highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  margin: 0 0 0.6rem !important;
+  padding: 0.4rem 0.6rem;
+  background: #fbf3df;
+  border-left: 3px solid #c8901f;
+  border-radius: 4px;
+  color: #7a5a12;
+  font-weight: 700;
+  font-size: 0.85rem;
 }
 
 /* ----- Result blocks ----- */
