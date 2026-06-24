@@ -2115,10 +2115,12 @@ def hub_cover_feature():
         award = p.get("award") or {}
         if award.get("image"):
             cap = html.escape(award.get("caption", ""))
+            href = award.get("url") or f"{p['slug']}/"
+            ext = ' target="_blank" rel="noopener"' if award.get("url") else ""
             return textwrap.dedent(f"""\
                 <section class="section hub-cover-section">
                   <div class="container is-max-desktop has-text-centered">
-                    <a class="hub-cover-feature" href="{p['slug']}/">
+                    <a class="hub-cover-feature" href="{attr(href)}"{ext}>
                       <img src="{award['image']}" alt="{attr(award.get('caption', 'Journal cover'))}">
                     </a>
                     <p class="hub-cover-caption">{cap}</p>
