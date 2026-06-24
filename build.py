@@ -1668,6 +1668,7 @@ SUBPAGE_TEMPLATE = """<!DOCTYPE html>
               {journal_badge}
             </a>
           </p>
+          {award_badge}
           <div class="publication-links">
             {link_buttons}
           </div>
@@ -1961,6 +1962,11 @@ def render_subpage(paper):
         affiliations_html=affiliations_html(paper["affiliations"]),
         contact_line=contact_line(paper),
         journal_badge=journal_badge(paper),
+        award_badge=(
+            f'<p class="hero-award"><span class="award-badge"><i class="fas fa-award"></i> '
+            f'{html.escape(paper["award"]["badge"])}</span></p>'
+            if paper.get("award") else ""
+        ),
         link_buttons=link_buttons(paper, canonical),
         engagement_buttons="\n".join(engagement_buttons()),
         teaser_section=teaser_videos_section(paper),

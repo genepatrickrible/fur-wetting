@@ -344,6 +344,9 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i, .title i { font-style: italic !important; }
   z-index: 2;
 }
 
+/* Hero award badge on a subpage (centered under the journal venue). */
+.hero-award { margin: 0 0 1.2rem; }
+
 /* Highlighted honor line inside a Publications index card. */
 .award-highlight {
   display: flex;
