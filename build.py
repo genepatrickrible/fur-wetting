@@ -30,14 +30,16 @@ SITE = {
     # NOTE: rendered as trusted inline HTML on the hub (not escaped), so the
     # lab name can be a hyperlink. Keep any literal < & > as HTML entities.
     "program_description": (
-        "A six-paper experimental program from the "
+        "The first systematic experimental account of how mammalian fur sheds "
+        "rain. This seminal six-paper program from the "
         "<a href=\"https://www.dickersonlab.com/\" target=\"_blank\" rel=\"noopener\">"
         "Fluids and Structures Lab (FaST Lab)</a> at the "
-        "University of Tennessee, Knoxville on how mammalian fur, and 3D-printed "
-        "fiber arrays inspired by it, govern penetration by impacting drops. "
-        "The papers progress from single-orientation arrays (horizontal, then "
-        "vertical) through sequential impacts and cross-sectional geometry to "
-        "the natural mammalian pelts that motivated the work."
+        "University of Tennessee, Knoxville establishes how mammalian fur, and "
+        "3D-printed fiber arrays inspired by it, govern penetration by impacting "
+        "drops. The papers progress from single-orientation arrays (horizontal, "
+        "then vertical) through sequential impacts and cross-sectional geometry "
+        "to the natural mammalian pelts that motivated the work, laying the "
+        "experimental foundation for the mechanics of fur wetting."
     ),
     "lead_authors_plain": "Gene Patrick S. Rible, Andrew K. Dickerson",
     "lead_authors_html": (
@@ -1858,7 +1860,7 @@ HUB_TEMPLATE = """<!DOCTYPE html>
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">The story, in six papers</h2>
     <p class="subtitle is-6 has-text-centered firsts-sub">
-      One result from each study, in the order the science unfolded. Each card plays a clip from its paper; click to read the full page.
+      One result from each study, in the order the science unfolded.
     </p>
     {hub_story}
   </div>
@@ -1867,9 +1869,6 @@ HUB_TEMPLATE = """<!DOCTYPE html>
 <section class="section" id="papers">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">All six papers, in one place</h2>
-    <p class="subtitle is-6 has-text-centered firsts-sub">
-      A quick index. Each card links to a per-paper page with the abstract, key findings, figures, and citation.
-    </p>
     <div class="columns is-multiline">
       {hub_paper_cards}
     </div>
