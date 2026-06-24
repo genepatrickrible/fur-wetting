@@ -1868,7 +1868,7 @@ HUB_TEMPLATE = """<!DOCTYPE html>
 
 <section class="section" id="papers">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">All six papers, in one place</h2>
+    <h2 class="title is-3 has-text-centered">Publications</h2>
     <div class="columns is-multiline">
       {hub_paper_cards}
     </div>
@@ -1877,10 +1877,7 @@ HUB_TEMPLATE = """<!DOCTYPE html>
 
 <section class="section" id="citation">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Citation (BibTeX)</h2>
-    <p class="subtitle is-6 has-text-centered firsts-sub">
-      All six entries in chronological order.
-    </p>
+    <h2 class="title is-3 has-text-centered">Citations</h2>
     <div class="content"><pre class="bibtex"><code>{combined_bibtex}</code></pre></div>
   </div>
 </section>
