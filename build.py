@@ -26,7 +26,7 @@ SITE = {
     "repo_url": "https://github.com/genepatrickrible/fur-wetting",
     "favicon_emoji": "\U0001F43A",  # wolf (one of the mammals studied in the fur-pelts paper)
     "body_of_work_title": "Drop Impact on Bio-inspired Fiber Arrays and Mammalian Fur",
-    "tagline": "How fiber geometry, packing density, and pelt structure govern raindrop penetration.",
+    "tagline": "How fiber geometry, packing density, and pelt structure govern raindrop penetration",
     # NOTE: rendered as trusted inline HTML on the hub (not escaped), so the
     # lab name can be a hyperlink. Keep any literal < & > as HTML entities.
     "program_description": (
