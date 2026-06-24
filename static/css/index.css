@@ -346,6 +346,9 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i, .title i { font-style: italic !important; }
 
 /* Hero award badge on a subpage (centered under the journal venue). */
 .hero-award { margin: 0 0 1.2rem; }
+/* Clickable badge variant: keep the white pill text, add a hover lift. */
+a.award-badge { color: #fff; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+a.award-badge:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); }
 
 /* Highlighted honor line inside a Publications index card. */
 .award-highlight {

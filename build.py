@@ -263,6 +263,7 @@ PAPERS = [
             "highlight": "Won the front cover of the journal",
             "image": "static/images/horizontal-fibers/langmuir-cover.jpg",
             "caption": "On the cover of Langmuir 40(26), 2024",
+            "url": "https://pubs.acs.org/toc/langd5/40/26",
         },
     },
     {
@@ -455,6 +456,7 @@ PAPERS = [
         "award": {
             "badge": "Featured Article",
             "highlight": "Selected as the journal's Featured Article",
+            "url": "https://pubs.aip.org/aip/pof/search-results?q=*dynamic%20drop%20penetration%20of%20vertically%20oriented%20fiber%20arrays&fl_SiteID=1000037&exPrm_fq=(Groups:%22Featured%22)&page=1&qb={%22q%22:%22*dynamic%20drop%20penetration%20of%20vertically%20oriented%20fiber%20arrays%22}",
         },
     },
     {
@@ -1963,8 +1965,14 @@ def render_subpage(paper):
         contact_line=contact_line(paper),
         journal_badge=journal_badge(paper),
         award_badge=(
-            f'<p class="hero-award"><span class="award-badge"><i class="fas fa-award"></i> '
-            f'{html.escape(paper["award"]["badge"])}</span></p>'
+            (
+                f'<p class="hero-award"><a class="award-badge" href="{attr(paper["award"]["url"])}" '
+                f'target="_blank" rel="noopener"><i class="fas fa-award"></i> '
+                f'{html.escape(paper["award"]["badge"])}</a></p>'
+                if paper["award"].get("url") else
+                f'<p class="hero-award"><span class="award-badge"><i class="fas fa-award"></i> '
+                f'{html.escape(paper["award"]["badge"])}</span></p>'
+            )
             if paper.get("award") else ""
         ),
         link_buttons=link_buttons(paper, canonical),
