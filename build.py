@@ -1883,7 +1883,10 @@ HUB_TEMPLATE = """<!DOCTYPE html>
 
 <section class="section" id="papers">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Publications</h2>
+    <h2 class="title is-3 has-text-centered">GitHub Pages</h2>
+    <p class="subtitle is-6 has-text-centered firsts-sub">
+      Click each card to go to individual GitHub page.
+    </p>
     <div class="columns is-multiline">
       {hub_paper_cards}
     </div>
