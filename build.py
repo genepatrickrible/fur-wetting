@@ -2171,7 +2171,7 @@ def hub_story():
                         <p class="story-venue">{venue}</p>
                         <h3 class="story-headline">{science_text(p['hub_headline'])}</h3>
                         <p class="story-finding">{science_text(p['tagline_card'])}</p>
-                        <span class="story-readmore">Read the paper&nbsp;&rarr;</span>
+                        <span class="story-readmore">Go to page&nbsp;&rarr;</span>
                       </div>
                     </div>
                   </a>
