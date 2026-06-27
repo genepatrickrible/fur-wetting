@@ -579,6 +579,11 @@ PAPERS = [
         "tagline_card": "Fragmentation of the first drop, promoted by hydrophobicity and high impact velocity, limits the second drop's lateral spreading and penetration depth.",
         "hub_headline": "The first drop shields the second",
         "hub_media": "static/videos/sequential-impacts/h5_teaser.mp4",
+        "award": {
+            "badge": "Featured Article",
+            "highlight": "Selected as the journal's Featured Article",
+            "url": "https://pubs.aip.org/aip/pof/search-results?q=*sequential%20drop%20impacts%20onto%20horizontal%20fiber%20arrays&fl_SiteID=1000037&exPrm_fq=(Groups:%22Featured%22)&page=1&qb={%22q%22:%22*sequential%20drop%20impacts%20onto%20horizontal%20fiber%20arrays%22}",
+        },
     },
     {
         "slug": "splash-suppression",
