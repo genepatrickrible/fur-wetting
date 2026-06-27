@@ -62,7 +62,7 @@ SITE = {
     # Site-wide engagement buttons (Phase 5b in the research-page-builder
     # skill). Empty string = button is not rendered. Both go in the hero
     # link-row on every subpage and the hub hero.
-    "schedule_url": "https://calendar.app.google/9djYm5daK8n7TC3VA",
+    "schedule_url": "https://calendar.app.google/YsaGA9uHTuNJpuD77",
     "discussion_url": "https://github.com/genepatrickrible/fur-wetting/discussions",
     # Giscus widget script. Renders as an in-page comments box at the
     # bottom of every page (after Acknowledgments, before the footer).
